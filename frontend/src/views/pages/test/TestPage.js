@@ -10,7 +10,7 @@ const TestPage = () => {
 
   return (
     <div>
-      <div>{pres.tableOfContents.data}</div>
+      <div>{JSON.stringify(pres.tableOfContents.data)}</div>
       <Link to={'/'}>Naslovna</Link>
       <Button
         onClick={() => {
