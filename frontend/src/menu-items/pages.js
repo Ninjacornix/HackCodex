@@ -1,7 +1,7 @@
 // assets
 import { IconKey } from '@tabler/icons';
 import axios from 'axios';
-
+import {useFetchTableOfContents} from 'services/toc.service';
 import { useState, useEffect } from 'react';
 
 // constant
@@ -9,32 +9,8 @@ const icons = {
   IconKey
 };
 
-/* const [listening, setListening] = useState(false);
-const [process, setProcess] = useState({});
-const [message, setMessage] = useState({});
+// ==============================|| MENU ITEMS ||============================== //
 
-const getData = async () => {
-  const status = listening;
-  if (!status) {
-    //const event = new EventSource('');
-    event.onmessage = e => {
-      const parsedData = JSON.parse(e.data);
-      switch (parsedData.type) {
-        case "init-connection":
-          setProcess(parsedData.processId);
-          break;
-        case "message":
-          setMessage(parsedData.message);
-          break;
-      }
-    };
-  } else {
-    setProcess({});
-    setMessage({});
-  }
-
-  setListening(!status);
-}; */
 
 const pages = {
   title: 'uwwwuuu',

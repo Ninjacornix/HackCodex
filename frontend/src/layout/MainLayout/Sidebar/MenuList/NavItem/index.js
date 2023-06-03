@@ -58,7 +58,7 @@ const NavItem = ({ item, level }) => {
       selected={customization.isOpen.findIndex((id) => id === item.title) > -1}
       onClick={() => itemHandler(item.title)}
     >
-      <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 18 : 36 }}>{icon}</ListItemIcon>
+      <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 30 : 36 }}>{icon}</ListItemIcon>
       <ListItemText
         primary={
           <Typography variant={customization.isOpen.findIndex((id) => id === item.id) > -1 ? 'h5' : 'body1'} color="inherit">
