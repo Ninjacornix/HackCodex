@@ -1,3 +1,4 @@
+from prompt_toc import prompt_toc
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -23,15 +24,28 @@ def TLDRLONG_PROMPT(text):
     return """
         TL;DR: """ + text + """
 
-        Summarize this in about 10-15 condensed scientific sentences without any style.
+        Summarize this in about 10-15 condensed scientific sentences without any style and without
+        missing out on information. The summary should be in plain text format, don't output anything else, just the text.
     """
 
 
-def get_summarised(url):
+def get_summarised(text, urls):
 
-    whole = get_whole(url)
+    whole = text + "\n\n"
 
-    yield "[got data]"
+    success = []
+    failed = []
+
+    for url in urls:
+        try:
+            whole += get_whole(url) + "\n\n"
+
+            success.append(url)
+        except:
+            failed.append(url)
+
+    yield "[got data from " + str(len(success)) + " urls]"
+    yield "[failed to get data from " + ", ".join(failed) + "]"
 
     # print(whole)
 
@@ -96,5 +110,15 @@ def summarize(text_):
 
 
 if __name__ == "__main__":
-    for x in get_summarised("https://en.wikipedia.org/wiki/Artificial_intelligence"):
+
+    # text = open(
+    #     "/Users/nitkonitkic/Documents/HackCodex/test_cases/crime_and_punishment.md").read()
+
+    # summary = "Former student Raskolnikov plans and commits the murder of a pawnbroker and her sister for money. He faints during questioning by the police and becomes a suspect. He falls ill while attempting to conceal his guilt, but eventually confesses to Sonya, a friend of a victim, and is sent to prison for eight years. Throughout the story, he meets characters that expose societal injustices and offer moral guidance. Svidrigailov, a lecherous man, commits suicide after being rejected by Dunya, Raskolnikov's sister, who ultimately marries Razumikhin. Raskolnikov eventually expresses remorse for his crime and develops a strong bond with Sonya."
+
+    for x in get_summarised("", ["http://www.script-o-rama.com/movie_scripts/a1/bee-movie-script-transcript-seinfeld.html"]):
+        print(x)
+        summary = x
+
+    for x in prompt_toc("Presentation about bee movie",  "Crime and punishment", summary):
         print(x)

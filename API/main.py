@@ -1,10 +1,12 @@
 import asyncio
+from pprint import pprint
 from sse_starlette.sse import EventSourceResponse
 from prompt_toc import prompt_toc
 import json
 from typing import Union
 from fastapi import FastAPI, Request
 
+from fastapi.middleware.cors import CORSMiddleware
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,15 +15,30 @@ load_dotenv()
 app = FastAPI()
 
 
+origins = [
+    "*",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
 
 @app.get('/make_toc')
-async def make_toc(request: Request, theme: str, title: str, context: str = ""):
+async def make_toc(request: Request, theme: str, title: str, context: str = "", secret: str = ""):
 
-    print(request.headers)
+    # pprint(request.headers)
+
+    print(secret)
 
     async def event_generator():
         for x in prompt_toc(theme, title, context):
