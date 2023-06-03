@@ -14,18 +14,20 @@ const NavGroup = ({ item }) => {
   const theme = useTheme();
 
   // menu list collapse & items
-  const items = item.children?.map((menu) => {
+  //console.log(item);
+  const items = item.slides?.map((menu) => {
+    //console.log(menu);
     switch (menu.type) {
-      case 'collapse':
+      case 'textSlide':
         return <NavCollapse key={menu.id} menu={menu} level={1} />;
-      case 'item':
-        return <NavItem key={menu.id} item={menu} level={1} />;
+      case 'imageFullSlide':
+        return <NavCollapse key={menu.id} menu={menu} level={1} />;
+      case 'imageQuarterSlide':
+        return <NavCollapse key={menu.id} menu={menu} level={1} />;
+      case 'imageHalfSlide':
+        return <NavCollapse key={menu.id} menu={menu} level={1} />;
       default:
-        return (
-          <Typography key={menu.id} variant="h6" color="error" align="center">
-            Menu Items Error
-          </Typography>
-        );
+        return <NavItem key={menu.id} item={menu} level={1} />;
     }
   });
 

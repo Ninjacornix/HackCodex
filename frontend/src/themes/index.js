@@ -18,14 +18,14 @@ export const theme = (customization) => {
 
   const themeOption = {
     colors: color,
-    heading: color.grey900,
+    heading: '#ffffff',
     paper: color.paper,
     backgroundDefault: color.paper,
-    background: color.primaryLight,
-    darkTextPrimary: color.grey700,
-    darkTextSecondary: color.grey500,
-    textDark: color.grey900,
-    menuSelected: color.secondaryDark,
+    background: color.grey200,
+    darkTextPrimary: '#ffffff',
+    darkTextSecondary: '#d9d2d2',
+    textDark: '#ffffff',
+    menuSelected: color.secondaryLight,
     menuSelectedBack: color.secondaryLight,
     divider: color.grey200,
     customization
