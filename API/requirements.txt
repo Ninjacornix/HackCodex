@@ -1,0 +1,4 @@
+fastapi==0.96.0
+openai==0.27.7
+sse_starlette==1.6.1
+uvicorn==0.22.0
