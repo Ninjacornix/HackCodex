@@ -30,7 +30,7 @@ function AddFolderDialog(props) {
 
   const handleSubmit = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/api/newfolder'`, {
-      name: props.addFolderName
+      name: props.selectedFolder + props.addFolderName
     })
       .then(function (response) {
         console.log(response);
@@ -41,7 +41,7 @@ function AddFolderDialog(props) {
         console.log(error);
       });
 
-    console.log('submit:  ' + props.selectedFolder + props.addFolderName);
+    console.log('submit:  ' + props.selectedFolder.path + '/' + props.addFolderName);
   }
 
   return (
@@ -52,7 +52,7 @@ function AddFolderDialog(props) {
             <Typography fontWeight={600} >Create a folder</Typography>
           </Grid>
           <Grid item xs={12}>
-            <TextField onChange={(e) => props.setAddFolderName(e.target.value)}></TextField>
+            <TextField sx={{ width: '100%' }} onChange={(e) => props.setAddFolderName(e.target.value)}></TextField>
           </Grid>
           <Grid item xs={12}>
             <Button onClick={() => handleSubmit()}>Continue</Button>
