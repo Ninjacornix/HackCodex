@@ -106,7 +106,7 @@ export default function themeTypography(theme) {
     },
     subMenuCaption: {
       fontSize: '0.6875rem',
-      fontWeight: 500,
+      fontWeight: 200,
       color: theme.darkTextSecondary,
       textTransform: 'capitalize'
     },

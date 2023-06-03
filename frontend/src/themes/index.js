@@ -23,7 +23,7 @@ export const theme = (customization) => {
     backgroundDefault: color.paper,
     background: color.grey200,
     darkTextPrimary: "#ffffff",
-    darkTextSecondary: "#ffffff",
+    darkTextSecondary: "#d9d2d2",
     textDark: "#ffffff",
     menuSelected: color.secondaryLight,
     menuSelectedBack: color.secondaryLight,
