@@ -32,7 +32,8 @@ const TreeDataComponent = ({ setSelectedFolder, data }) => {
         defaultExpandIcon={<ChevronRightIcon
             style={{ width: 20, height: 20 }} />}
         sx={{ height: 220, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}>
-        {renderTree(data)}
+        {/*renderTree(data)*/}
+        {data.contents.map((node) => (node.type == "folder" ? renderTree(node) : null))}
     </TreeView>);
 }
 
