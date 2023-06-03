@@ -1,11 +1,14 @@
+import asyncio
+from sse_starlette.sse import EventSourceResponse
+from prompt_toc import prompt_toc
 import json
 from typing import Union
 from fastapi import FastAPI, Request
 
-from prompt_toc import prompt_toc
 
-from sse_starlette.sse import EventSourceResponse
-import asyncio
+from dotenv import load_dotenv
+load_dotenv()
+
 
 app = FastAPI()
 
@@ -15,12 +18,10 @@ def read_root():
     return {"Hello": "World"}
 
 
-STREAM_DELAY = 1  # second
-RETRY_TIMEOUT = 15000  # milisecond
-
-
 @app.get('/make_toc')
-async def message_stream(request: Request, theme: str, title: str, context: str = ""):
+async def make_toc(request: Request, theme: str, title: str, context: str = ""):
+
+    print(request.headers)
 
     async def event_generator():
         for x in prompt_toc(theme, title, context):
@@ -35,6 +36,7 @@ async def message_stream(request: Request, theme: str, title: str, context: str 
             # await asyncio.sleep(STREAM_DELAY)
 
     return EventSourceResponse(event_generator())
+
 
 if __name__ == "__main__":
     import uvicorn

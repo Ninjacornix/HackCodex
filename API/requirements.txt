@@ -1,4 +1,8 @@
 fastapi==0.96.0
+gensim==3.6.0
 openai==0.27.7
+python-dotenv==1.0.0
+selenium==4.9.1
 sse_starlette==1.6.1
 uvicorn==0.22.0
+webdriver_manager==3.8.6

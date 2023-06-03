@@ -1,9 +1,12 @@
 import json
+import os
 import openai
 
-API_KEY = "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"
+from dotenv import load_dotenv
+load_dotenv()
 
-openai.api_key = API_KEY
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def prompt_toc(theme, title, context=""):
