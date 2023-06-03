@@ -1,66 +1,115 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useGoogleLogin } from '@react-oauth/google';
+
+import axios from 'axios';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import {
   Box,
   Button,
-  Checkbox,
-  Divider,
-  FormControl,
-  FormControlLabel,
-  FormHelperText,
+  //   Checkbox,
+  //   Divider,
+  //   FormControl,
+  //   FormControlLabel,
+  //   FormHelperText,
   Grid,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  Stack,
-  Typography,
+  //   IconButton,
+  //   InputAdornment,
+  //   InputLabel,
+  //   OutlinedInput,
+  //   Stack,
+  //   Typography,
   useMediaQuery
 } from '@mui/material';
 
-// third party
-import * as Yup from 'yup';
-import { Formik } from 'formik';
+import Google from 'assets/images/icons/social-google.svg';
+
+// // third party
+// import * as Yup from 'yup';
+// import { Formik } from 'formik';
 
 // project imports
-import useScriptRef from 'hooks/useScriptRef';
+// import useScriptR  ef from 'hooks/useScriptRef';
 import AnimateButton from 'ui-component/extended/AnimateButton';
+import { LOGIN } from 'store/actions';
 
-// assets
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
-import Google from 'assets/images/icons/social-google.svg';
+// // assets
+// import Visibility from '@mui/icons-material/Visibility';
+// import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
-const FirebaseLogin = ({ ...others }) => {
+const FirebaseLogin = (/* { ...others } */) => {
   const theme = useTheme();
-  const scriptedRef = useScriptRef();
+  // const scriptedRef = useScriptRef();
   const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
-  const customization = useSelector((state) => state.customization);
-  const [checked, setChecked] = useState(true);
+  // const customization = useSelector((state) => state.customization);
+  // const [checked, setChecked] = useState(true);
 
-  const googleHandler = async () => {
-    console.error('Login');
+  const [user, setUser] = useState(undefined);
+
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    console.log(auth);
+    if (auth.accessKey !== undefined) {
+      // redirectaj negdi nekako
+      alert('You are already logged in!!!');
+    }
+  }, [auth]);
+
+  useEffect(() => {
+    console.log('user changed!');
+    if (user) {
+      axios
+        .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+          headers: {
+            Authorization: `Bearer ${user.access_token}`,
+            Accept: 'application/json'
+          }
+        })
+        .then((res) => {
+          dispatch({ type: LOGIN, user: { ...res.data, access_token: user.access_token } });
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user, dispatch]);
+
+  console.log(auth);
+
+  const googleSuccess = (response) => {
+    console.log(response);
+    // log the user, redirect to home screen
+    setUser(response);
+  };
+  const googleError = (error) => {
+    console.log(error);
   };
 
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const googleHandler = useGoogleLogin({
+    onSuccess: googleSuccess,
+    onError: googleError
+  });
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  // const [showPassword, setShowPassword] = useState(false);
+  // const handleClickShowPassword = () => {
+  //   setShowPassword(!showPassword);
+  // };
+
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
 
   return (
     <>
       <Grid container direction="column" justifyContent="center" spacing={2}>
         <Grid item xs={12}>
+          {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} locale="en" /> */}
           <AnimateButton>
             <Button
               disableElevation
@@ -74,14 +123,14 @@ const FirebaseLogin = ({ ...others }) => {
                 borderColor: theme.palette.grey[100]
               }}
             >
-              <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
-                <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
+              <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }} alignItems="center">
+                <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16, display: 'flex' }} />
               </Box>
               Sign in with Google
             </Button>
           </AnimateButton>
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Box
             sx={{
               alignItems: 'center',
@@ -115,9 +164,9 @@ const FirebaseLogin = ({ ...others }) => {
           <Box sx={{ mb: 2 }}>
             <Typography variant="subtitle1">Sign in with Email address</Typography>
           </Box>
-        </Grid>
+        </Grid> */}
       </Grid>
-
+      {/* 
       <Formik
         initialValues={{
           email: 'info@codedthemes.com',
@@ -222,7 +271,7 @@ const FirebaseLogin = ({ ...others }) => {
             </Box>
           </form>
         )}
-      </Formik>
+      </Formik> */}
     </>
   );
 };
