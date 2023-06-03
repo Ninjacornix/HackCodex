@@ -1,5 +1,5 @@
 export default function componentStyleOverrides(theme) {
-  const bgColor = theme.colors?.grey50;
+  const bgColor = "#0f1120"
   return {
     MuiButton: {
       styleOverrides: {
@@ -84,7 +84,7 @@ export default function componentStyleOverrides(theme) {
     MuiListItemText: {
       styleOverrides: {
         primary: {
-          color: theme.textDark
+          color: theme.textLight
         }
       }
     },

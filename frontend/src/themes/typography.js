@@ -87,7 +87,7 @@ export default function themeTypography(theme) {
       }
     },
     mainContent: {
-      backgroundColor: theme.background,
+      backgroundColor: "#181b30",
       width: '100%',
       minHeight: 'calc(100vh - 88px)',
       flexGrow: 1,
@@ -106,7 +106,7 @@ export default function themeTypography(theme) {
     },
     subMenuCaption: {
       fontSize: '0.6875rem',
-      fontWeight: 500,
+      fontWeight: 200,
       color: theme.darkTextSecondary,
       textTransform: 'capitalize'
     },
