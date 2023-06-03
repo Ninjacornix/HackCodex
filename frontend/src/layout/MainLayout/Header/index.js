@@ -45,14 +45,17 @@ const Header = ({ handleLeftDrawerToggle }) => {
               ...theme.typography.commonAvatar,
               ...theme.typography.mediumAvatar,
               transition: 'all .2s ease-in-out',
-              background: "#31596A",
+              background: '#31596A',
               color: theme.palette.primary.light,
               '&:hover': {
-                background: "#31596A",
-                color: "#000000"
+                background: '#31596A',
+                color: '#000000'
               }
             }}
-            onClick={() => {handleLeftDrawerToggle(); handleToggle()}}
+            onClick={() => {
+              handleLeftDrawerToggle();
+              handleToggle();
+            }}
             color="inherit"
           >
             {open ? <IconLayoutSidebarLeftExpand stroke={1.5} /> : <IconLayoutSidebarLeftCollapse stroke={1.5} />}

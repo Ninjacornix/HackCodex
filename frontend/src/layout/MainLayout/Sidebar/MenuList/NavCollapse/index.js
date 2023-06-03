@@ -17,13 +17,12 @@ import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
-  
   let newMenu = {
     id: menu.id,
     type: menu.type
   };
 
-  if(menu.description){
+  if (menu.description) {
     newMenu.title = menu.description;
   } else {
     newMenu.title = menu.image_detailed_desc;

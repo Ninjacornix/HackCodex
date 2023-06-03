@@ -45,7 +45,6 @@ const NavItem = ({ item, level }) => {
       break;
   }
 
-
   return (
     <ListItemButton
       sx={{

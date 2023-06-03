@@ -13,11 +13,7 @@ const Dashboard = () => {
     setLoading(false);
   }, []);
 
-  return (
-    <Grid container spacing={gridSpacing}>
-      
-    </Grid>
-  );
+  return <Grid container spacing={gridSpacing}></Grid>;
 };
 
 export default Dashboard;

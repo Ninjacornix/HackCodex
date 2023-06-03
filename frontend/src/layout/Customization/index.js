@@ -56,7 +56,7 @@ const Customization = () => {
     dispatch({ type: SET_BORDER_RADIUS, borderRadius });
   }, [dispatch, borderRadius]);
 
-  let name = "Type in yout new prompt here";
+  let name = 'Type in yout new prompt here';
 
   // state - font family
   const [textName, setTextName] = useState(name);
@@ -113,8 +113,7 @@ const Customization = () => {
                     value={textName}
                     helperText="Please select your font family"
                     variant="outlined"
-                  >
-                  </TextField>
+                  ></TextField>
                 </FormControl>
               </SubCard>
             </Grid>

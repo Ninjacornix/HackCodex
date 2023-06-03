@@ -1,5 +1,5 @@
 export default function componentStyleOverrides(theme) {
-  const bgColor = "#0f1120"
+  const bgColor = '#0f1120';
   return {
     MuiButton: {
       styleOverrides: {

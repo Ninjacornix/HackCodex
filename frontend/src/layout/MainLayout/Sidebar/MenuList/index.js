@@ -9,7 +9,7 @@ import menuItem from 'menu-items';
 
 const MenuList = () => {
   const navItems = menuItem.items[0].sections.map((item) => {
-      return <NavGroup key={item.id} item={item} />;
+    return <NavGroup key={item.id} item={item} />;
   });
 
   return <>{navItems}</>;

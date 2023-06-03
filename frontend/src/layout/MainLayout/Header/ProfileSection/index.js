@@ -95,14 +95,14 @@ const ProfileSection = () => {
           alignItems: 'center',
           borderRadius: '27px',
           transition: 'all .2s ease-in-out',
-          borderColor: "#000000",
-          backgroundColor: "#604BA0",
+          borderColor: '#000000',
+          backgroundColor: '#604BA0',
           '&[aria-controls="menu-list-grow"], &:hover': {
-            borderColor: "#000000",
-            background: "#604BA0 !important",
+            borderColor: '#000000',
+            background: '#604BA0 !important',
             color: theme.palette.primary.light,
             '& svg': {
-              stroke: "#000000"
+              stroke: '#000000'
             }
           },
           '& .MuiChip-label': {
