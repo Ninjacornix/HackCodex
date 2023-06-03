@@ -29,8 +29,10 @@ function AddFolderDialog(props) {
   };
 
   const handleSubmit = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/api/newfolder'`, {
-      name: props.selectedFolder + props.addFolderName
+    axios.post(`https://bb5b-80-232-170-198.ngrok-free.app/api/folder`, {
+      command: 'mkdir',
+      path: props.selectedFolder.path,
+      name: props.addFolderName
     })
       .then(function (response) {
         console.log(response);
@@ -49,7 +51,7 @@ function AddFolderDialog(props) {
       <Box sx={{ p: 2 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} >
-            <Typography fontWeight={600} >Create a folder</Typography>
+            <Typography variant='h4'>Create a folder</Typography>
           </Grid>
           <Grid item xs={12}>
             <TextField sx={{ width: '100%' }} onChange={(e) => props.setAddFolderName(e.target.value)}></TextField>

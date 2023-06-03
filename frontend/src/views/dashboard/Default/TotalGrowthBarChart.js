@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Grid, MenuItem, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, MenuItem, Stack, TextField, Typography } from '@mui/material';
 
 // project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
@@ -88,25 +88,19 @@ const TotalGrowthBarChart = ({ selectedFolder, isLoading }) => {
         <SkeletonTotalGrowthBarChart />
       ) : (
         <MainCard>
-          <Grid container spacing={gridSpacing}>
-            <Grid item xs={12}>
-              <Grid container alignItems="center" justifyContent="space-between">
-                <Grid item>
-                  <Grid container direction="column" spacing={1}>
-                    <Grid item>
-                      <Typography variant="subtitle2">{selectedFolder?.path}</Typography>
-                    </Grid>
-                    <Grid item>
-                      <Typography variant="h3">{selectedFolder?.name}</Typography>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <div>Projekti</div>
-            </Grid>
-          </Grid>
+          <Stack sx={{ height: 550 }} spacing={3}>
+            <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
+              {selectedFolder ?
+                <Stack spacing={1}>
+                  <Typography variant="subtitle2">{selectedFolder?.path}</Typography>
+                  <Typography variant="h3">{selectedFolder?.name}</Typography>
+                </Stack>
+                : <Typography variant="h3">No folder selected</Typography>}
+              <Button>New Project</Button>
+            </Stack>
+            {selectedFolder ?
+              <Typography>Projekti</Typography> : null}
+          </Stack>
         </MainCard>
       )}
     </>

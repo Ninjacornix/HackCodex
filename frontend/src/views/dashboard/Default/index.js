@@ -7,7 +7,8 @@ import { gridSpacing } from 'store/constant';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
-
+import TotalGrowthBarChart from './TotalGrowthBarChart';
+import PopularCard from './PopularCard';
 // Mock filesystem data
 // Will be fetched from backend (todo)
 const data = {
