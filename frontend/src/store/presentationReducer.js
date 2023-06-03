@@ -4,8 +4,7 @@ import * as actionTypes from './actions';
 export const initialState = {
   tableOfContents: {
     data: undefined,
-    isLoading: undefined,
-    isError: undefined
+    isLoading: undefined
   }
   // add presentation stuff here
 };
@@ -15,7 +14,10 @@ const presentationReducer = (state = initialState, action) => {
     case actionTypes.SET_TOC:
       return {
         ...state,
-        tableOfContents: action.tableOfContents
+        tableOfContents: {
+          ...state.tableOfContents,
+          ...action.tableOfContents
+        }
       };
     default:
       return state;

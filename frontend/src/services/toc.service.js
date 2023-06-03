@@ -13,11 +13,11 @@ export const useFetchTableOfContents = () => {
     );
 
     events.onmessage = (event) => {
-      dispatch({ type: SET_TOC, tableOfContents: event.data });
+      dispatch({ type: SET_TOC, tableOfContents: { data: JSON.parse(event.data), isLoading: true } });
     };
 
     events.onerror = (error) => {
-      console.log(error);
+      dispatch({ type: SET_TOC, tableOfContents: { isLoading: false } });
       events.close();
     };
   };

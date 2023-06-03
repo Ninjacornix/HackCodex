@@ -1,8 +1,9 @@
-import pages from './pages';
+import { useSelector } from 'react-redux';
 
+export const useMenuItems = () => {
+  const pres = useSelector((state) => state.presentation);
 
-const menuItems = {
-  items: [pages]
+  return {
+    items: pres.tableOfContents.data ? [pres.tableOfContents.data] : []
+  };
 };
-
-export default menuItems;

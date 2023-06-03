@@ -1,8 +1,5 @@
 // assets
 import { IconKey } from '@tabler/icons';
-import axios from 'axios';
-import {useFetchTableOfContents} from 'services/toc.service';
-import { useState, useEffect } from 'react';
 
 // constant
 const icons = {
@@ -10,7 +7,6 @@ const icons = {
 };
 
 // ==============================|| MENU ITEMS ||============================== //
-
 
 const pages = {
   title: 'uwwwuuu',

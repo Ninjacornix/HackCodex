@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useFetchTableOfContents } from 'services/toc.service';
 
 const TestPage = () => {
@@ -9,7 +10,8 @@ const TestPage = () => {
 
   return (
     <div>
-      <div>{JSON.stringify(pres.tableOfContents)}</div>
+      <div>{pres.tableOfContents.data}</div>
+      <Link to={'/'}>Naslovna</Link>
       <Button
         onClick={() => {
           console.log('AAAAAAA');
