@@ -95,14 +95,14 @@ const ProfileSection = () => {
           alignItems: 'center',
           borderRadius: '27px',
           transition: 'all .2s ease-in-out',
-          borderColor: theme.palette.primary.light,
-          backgroundColor: theme.palette.primary.light,
+          borderColor: "#000000",
+          backgroundColor: "#604BA0",
           '&[aria-controls="menu-list-grow"], &:hover': {
-            borderColor: theme.palette.primary.main,
-            background: `${theme.palette.primary.main}!important`,
+            borderColor: "#000000",
+            background: "#604BA0 !important",
             color: theme.palette.primary.light,
             '& svg': {
-              stroke: theme.palette.primary.light
+              stroke: "#000000"
             }
           },
           '& .MuiChip-label': {
@@ -123,7 +123,7 @@ const ProfileSection = () => {
             color="inherit"
           />
         }
-        label={<IconSettings stroke={1.5} size="1.5rem" color={theme.palette.primary.main} />}
+        label={<IconSettings stroke={1.5} size="1.5rem" color={theme.palette.primary.light} />}
         variant="outlined"
         ref={anchorRef}
         aria-controls={open ? 'menu-list-grow' : undefined}

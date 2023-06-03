@@ -6,12 +6,10 @@ const icons = {
   IconKey
 };
 
-// ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
-
 const pages = {
   id: 'pages',
-  title: 'Pages',
-  caption: 'Pages Caption',
+  title: 'Slides',
+  caption: 'Your slides are here',
   type: 'group',
   children: [
     {
