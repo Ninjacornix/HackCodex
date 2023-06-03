@@ -14,41 +14,80 @@ import { gridSpacing } from 'store/constant';
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
+
+// Mock filesystem data
+// Will be fetched from backend (todo)
+const data = {
+  "name": "root",
+  "type": "folder",
+  "path": "/root",
+  "contents": [
+    {
+      "name": "folder1",
+      "type": "folder",
+      "path": "/root/folder1",
+      "contents": [
+        {
+          "name": "file1.txt",
+          "type": "file",
+          "path": "/root/folder1/file1.txt"
+        },
+        {
+          "name": "file2.txt",
+          "type": "file",
+          "path": "/root/folder1/file2.txt"
+        }
+      ]
+    },
+    {
+      "name": "folder2",
+      "type": "folder",
+      "path": "/root/folder2",
+      "contents": [
+        {
+          "name": "folder3",
+          "type": "folder",
+          "path": "/root/folder2/folder3",
+          "contents": [
+            {
+              "name": "file3.txt",
+              "type": "file",
+              "path": "/root/folder2/folder3/file3.txt"
+            },
+            {
+              "name": "file4.txt",
+              "type": "file",
+              "path": "/root/folder2/folder3/file4.txt"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
 const Dashboard = () => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false);
   }, []);
 
+  const [fileStructure, setFileStructure] = useState(data);
+  const [selectedFolder, setSelectedFolder] = useState(null);
+
+  console.log(selectedFolder);
+
   return (
     <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
-          <Grid item lg={4} md={6} sm={6} xs={12}>
-            <EarningCard isLoading={isLoading} />
-          </Grid>
-          <Grid item lg={4} md={6} sm={6} xs={12}>
-            <TotalOrderLineChartCard isLoading={isLoading} />
-          </Grid>
-          <Grid item lg={4} md={12} sm={12} xs={12}>
-            <Grid container spacing={gridSpacing}>
-              <Grid item sm={6} xs={12} md={6} lg={12}>
-                <TotalIncomeDarkCard isLoading={isLoading} />
-              </Grid>
-              <Grid item sm={6} xs={12} md={6} lg={12}>
-                <TotalIncomeLightCard isLoading={isLoading} />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
           <Grid item xs={12} md={8}>
-            <TotalGrowthBarChart isLoading={isLoading} />
+            <TotalGrowthBarChart selectedFolder={selectedFolder} isLoading={isLoading} />
           </Grid>
           <Grid item xs={12} md={4}>
-            <PopularCard isLoading={isLoading} />
+            <PopularCard data={fileStructure} selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder} isLoading={isLoading} />
           </Grid>
         </Grid>
       </Grid>
