@@ -5,10 +5,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
+import { PersistGate } from 'redux-persist/integration/react';
+
 // project imports
 import * as serviceWorker from 'serviceWorker';
 import App from 'App';
-import { store } from 'store';
+import storeAndPersistor from 'store';
 
 // style + assets
 import 'assets/scss/style.scss';
@@ -16,14 +18,18 @@ import config from './config';
 
 // ==============================|| REACT DOM RENDER  ||============================== //
 
+const { store, persistor } = storeAndPersistor();
+
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(
   <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
     <Provider store={store}>
-      <BrowserRouter basename={config.basename}>
-        <App />
-      </BrowserRouter>
+      <PersistGate loading={<div>Loading...</div>} persistor={persistor}>
+        <BrowserRouter basename={config.basename}>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </GoogleOAuthProvider>
 );
