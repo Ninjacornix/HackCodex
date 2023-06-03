@@ -1,12 +1,9 @@
-import dashboard from './dashboard';
-import pages from './pages';
-import utilities from './utilities';
-import other from './other';
+import { useSelector } from 'react-redux';
 
-// ==============================|| MENU ITEMS ||============================== //
+export const useMenuItems = () => {
+  const pres = useSelector((state) => state.presentation);
 
-const menuItems = {
-  items: [dashboard, pages, utilities, other]
+  return {
+    items: pres.tableOfContents.data ? [pres.tableOfContents.data] : []
+  };
 };
-
-export default menuItems;

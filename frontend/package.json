@@ -12,6 +12,7 @@
     "@mui/material": "^5.13.3",
     "@mui/system": "^5.8.6",
     "@mui/utils": "^5.8.6",
+    "@react-oauth/google": "^0.11.0",
     "@tabler/icons": "^1.72.0",
     "apexcharts": "^3.35.3",
     "axios": "^1.4.0",
@@ -29,13 +30,15 @@
     "react-router-dom": "6.3.0",
     "react-scripts": "^5.0.1",
     "redux": "^4.2.0",
+    "redux-persist": "^6.0.0",
     "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier . --write"
   },
   "eslintConfig": {
     "extends": [
@@ -71,7 +74,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "immutable": "^4.3.0",
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "sass": "^1.53.0"
   }
 }

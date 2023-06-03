@@ -106,11 +106,11 @@ const NotificationSection = () => {
               ...theme.typography.commonAvatar,
               ...theme.typography.mediumAvatar,
               transition: 'all .2s ease-in-out',
-              background: theme.palette.secondary.light,
-              color: theme.palette.secondary.dark,
+              background: '#DF3347',
+              color: theme.palette.secondary.light,
               '&[aria-controls="menu-list-grow"],&:hover': {
-                background: theme.palette.secondary.dark,
-                color: theme.palette.secondary.light
+                background: '#DF3347',
+                color: '#000000'
               }
             }}
             ref={anchorRef}
