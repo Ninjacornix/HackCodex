@@ -68,7 +68,7 @@
       }
     ],
     "no-unused-vars": [
-      "error",
+      "warn",
       {
         "ignoreRestSiblings": false
       }
