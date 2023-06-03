@@ -1,0 +1,80 @@
+{
+  "title": "AI",
+  "sections": [
+    {
+      "title": "Introduction",
+      "slides": [
+        {
+          "type": "title",
+          "title": "What is AI?"
+        },
+        {
+          "type": "text",
+          "title": "Definition",
+          "description": "Artificial Intelligence (AI) is an area of computer science that emphasizes the creation of intelligent machines that work and react like humans. Some of the activities computers with AI are designed for include:\n- Speech recognition\n- Learning\n- Planning\n- Problem solving"
+        },
+        {
+          "type": "image_full",
+          "title": "Examples of AI technology",
+          "description": "Examples of AI technology include virtual assistants, chatbots, facial recognition, autonomous vehicles, and more.",
+          "image_detailed_desc": "Some desc"
+        }
+      ]
+    },
+    {
+      "title": "Types of AI",
+      "slides": [
+        {
+          "type": "title",
+          "title": "Types of AI"
+        },
+        {
+          "type": "text",
+          "title": "Narrow/Weak AI",
+          "description": "AIs that are trained to perform specific tasks, like image recognition or voice commands."
+        },
+        {
+          "type": "text",
+          "title": "General/Strong AI",
+          "description": "AIs that are capable of performing any intellectual task that a human can."
+        },
+        {
+          "type": "image_quarter",
+          "title": "Examples of narrow/weak AI",
+          "description": "Examples of narrow/weak AI include Siri, Amazon Alexa, and social media image recognition.",
+          "image_detailed_desc": "Some desc"
+        }
+      ]
+    },
+    {
+      "title": "Applications of AI",
+      "slides": [
+        {
+          "type": "title",
+          "title": "Applications of AI"
+        },
+        {
+          "type": "text",
+          "title": "Healthcare",
+          "description": "AI is being used in healthcare to help diagnose and treat diseases."
+        },
+        {
+          "type": "text",
+          "title": "Finance",
+          "description": "AI is being used in finance to detect fraud and manage investments."
+        },
+        {
+          "type": "text",
+          "title": "Marketing",
+          "description": "AI is being used in marketing to analyze customer behavior and provide personalized experiences."
+        },
+        {
+          "type": "image_half",
+          "title": "AI in healthcare example",
+          "description": "AI is being used in healthcare to develop new drugs and treatments.",
+          "image_detailed_desc": "Some desc"
+        }
+      ]
+    }
+  ]
+}
