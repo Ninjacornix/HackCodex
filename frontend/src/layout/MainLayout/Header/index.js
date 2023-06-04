@@ -87,6 +87,14 @@ const Header = ({ handleLeftDrawerToggle }) => {
       {auth.access_token ? (
         <>
           {/* <NotificationSection /> */}
+          <Button
+            onClick={() => navigate('/dashboard')}
+            color="secondary"
+            variant="outlined"
+            sx={{ marginRight: '24px', borderRadius: '32px', borderWidth: '2px' }}
+          >
+            Dashboard
+          </Button>
           <ProfileSection
             auth={{
               name: auth.name,
