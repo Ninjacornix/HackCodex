@@ -1,9 +1,25 @@
 import * as React from 'react';
-import { Box, Stepper, Step, StepLabel, Grid, Paper, Typography, ImageList, ImageListItem, ImageListItemBar } from '@mui/material/';
+import {
+  Box,
+  Stepper,
+  Step,
+  StepLabel,
+  Grid,
+  Paper,
+  Typography,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  IconButton
+} from '@mui/material/';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import './about.css';
+
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { KeyboardArrowRight } from '@mui/icons-material';
 
 const steps = [
   'Insert Content and Preferences',
@@ -25,7 +41,7 @@ const aboutUsData = [
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
     title: 'Ivan Vlahov',
-    description: 'the fastest hacker in X.FER'
+    description: 'the fastest web-developer'
   },
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
@@ -35,24 +51,25 @@ const aboutUsData = [
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
     title: 'Milan Vrankić',
-    description: 'the editor master'
+    description: 'director and multitasking master'
   },
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
     title: 'Krunoslav Tomičić',
-    description: '.'
+    description: 'crazy tester'
   },
   {
     img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
     title: 'Maja Milas',
-    description: '.'
+    description: 'stray physicist'
   }
 ];
 
-/*
-TODO: dodati strelice lijevo i desno na ono cudo
-napisati za xfer
-*/
+/**
+ * TODO
+ * dodati slike
+ * dodati strelice lijevo i desno za slider
+ */
 
 const About = () => {
   const theme = useTheme();
@@ -100,13 +117,21 @@ const About = () => {
         Happy creating!
       </Typography>
       <Typography variant="h1">Create wonderful presentations</Typography>
-      <Stepper activeStep={active} alternativeLabel>
-        {steps.map((label, index) => (
-          <Step key={label} onClick={() => handleClick(index)}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+      <div style={{ display: 'flex' }}>
+        <IconButton aria-label="left_arrow" onClick={() => handleClick(active == 0 ? steps.length - 1 : active - 1)}>
+          <KeyboardArrowLeftIcon stroke={1.5} size="1rem" color="primary" />
+        </IconButton>
+        <Stepper activeStep={active} alternativeLabel>
+          {steps.map((label, index) => (
+            <Step key={label} onClick={() => handleClick(index)}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <IconButton aria-label="right_arrow" onClick={() => handleClick(active == steps.length - 1 ? 0 : active + 1)}>
+          <KeyboardArrowRightIcon stroke={1.5} size="1rem" color="primary" />
+        </IconButton>
+      </div>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={1}>
           {gridComp}
@@ -114,8 +139,14 @@ const About = () => {
       </Box>
 
       <Typography variant="h1">Who are we?</Typography>
-      <Typography variant="body2">We`re NAPISATI O XFERU</Typography>
-      <ImageList cols={5} gap={8} style={{ margin: 'auto' }}>
+      <Typography variant="body2">
+        We are members of X.FER, a student organization at the Faculty of Electrical Engineering and Computing in Zagreb. Our main purpose
+        is to teach students from all years about competitive programming and the fascinating world of algorithms. Since we are all busy
+        individuals, we have created NAME to help us and our friends complete manual work quickly and focus on what truly matters - diving
+        into another framework! &#x1F603;
+      </Typography>
+
+      <ImageList cols={5} gap={8}>
         {aboutUsData.map((item) => (
           <ImageListItem key={item.img}>
             <img
