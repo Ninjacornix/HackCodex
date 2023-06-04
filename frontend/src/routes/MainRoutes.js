@@ -4,6 +4,8 @@ import { lazy } from 'react';
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
 
+import TestPage from 'views/pages/test/TestPage';
+
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
@@ -32,6 +34,10 @@ const MainRoutes = {
           element: <UtilsTypography />
         }
       ]
+    },
+    {
+      path: 'test-page',
+      element: <TestPage />
     },
     {
       path: 'utils',

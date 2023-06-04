@@ -12,38 +12,38 @@ window.console =
 
 jQuery(document).ready(function ($) {
   $('ul.pattern .color1').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/red.css');
+    $('#color-opt').attr('href', 'css/colors/red.css');
     return false;
   });
 
   $('ul.pattern .color2').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/green.css');
+    $('#color-opt').attr('href', 'css/colors/green.css');
     return false;
   });
 
   $('ul.pattern .color3').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/pink.css');
+    $('#color-opt').attr('href', 'css/colors/pink.css');
     return false;
   });
 
   $('ul.pattern .color4').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/cyan.css');
+    $('#color-opt').attr('href', 'css/colors/cyan.css');
     return false;
   });
   $('ul.pattern .color5').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/purple.css');
+    $('#color-opt').attr('href', 'css/colors/purple.css');
     return false;
   });
   $('ul.pattern .color6').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/blue.css');
+    $('#color-opt').attr('href', 'css/colors/blue.css');
     return false;
   });
   $('ul.pattern .color7').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/orange.css');
+    $('#color-opt').attr('href', 'css/colors/orange.css');
     return false;
   });
   $('ul.pattern .color8').click(function () {
-    $('#color-opt').attr('href', 'free/css/colors/yellow.css');
+    $('#color-opt').attr('href', 'css/colors/yellow.css');
     return false;
   });
 

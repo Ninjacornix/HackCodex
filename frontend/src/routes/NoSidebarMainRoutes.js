@@ -18,10 +18,6 @@ const NoSidebarMainRoutes = {
       element: <LandingPage />
     },
     {
-      path: 'test-page',
-      element: <TestPage />
-    },
-    {
       path: 'about',
       element: <About />
     }

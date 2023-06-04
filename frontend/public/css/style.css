@@ -405,7 +405,7 @@ iframe {
   =====================================*/
 
 .bg-home {
-  background: url('free/images/bg-home.jpg');
+  background: url('images/bg-home.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -701,7 +701,7 @@ iframe {
 ======================================*/
 
 .bg-web-desc {
-  background: url('free/images/img-1.jpg');
+  background: url('images/img-1.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -834,7 +834,7 @@ iframe {
 ======================================*/
 
 .bg-get-start {
-  background: url('free/images/img-2.jpg');
+  background: url('images/img-2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
