@@ -12,5 +12,8 @@ export const LOGOUT = '@auth/LOGOUT';
 // action - presentation reducer
 export const SET_TOC = '@presentation/TOC';
 
+// action - tokens reducer
+export const SET_TOKENS = '@tokens/SET_TOKENS';
+
 // action - all reducers
 export const RESET_ALL = '@all_reducers/RESET_ALL';

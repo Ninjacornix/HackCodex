@@ -9,6 +9,9 @@ import { gridSpacing } from 'store/constant';
 
 import TotalGrowthBarChart from './TotalGrowthBarChart';
 import PopularCard from './PopularCard';
+import EarningCard from './EarningCard';
+import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
+import TotalOrderLineChartCard from './TotalOrderLineChartCard';
 // Mock filesystem data
 // Will be fetched from backend (todo)
 const data = {
@@ -74,14 +77,15 @@ const Dashboard = () => {
 
   return (
     <Grid container spacing={gridSpacing}>
-
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={8} md={8}>
             <TotalGrowthBarChart selectedFolder={selectedFolder} isLoading={isLoading} />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={2} md={4}>
             <PopularCard data={fileStructure} selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder} isLoading={isLoading} />
+            <div style={{ height: '50px' }}></div>
+            <TotalOrderLineChartCard selectedFolder={selectedFolder} isLoading={isLoading} />
           </Grid>
         </Grid>
       </Grid>
