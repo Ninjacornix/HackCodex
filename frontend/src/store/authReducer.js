@@ -18,6 +18,7 @@ const authReducer = (state = initialState, action) => {
     case actionTypes.LOGIN:
       return action.user;
     case actionTypes.LOGOUT:
+    case actionTypes.RESET_ALL:
       return initialState;
     default:
       return state;

@@ -74,6 +74,8 @@ def TOC_PROMPT(theme, title, context=""):
     The presentation should have at least 3 sections and each section should have at least 3 slides.
     The presentation should have at least 3 different slide types.
     But more are welcomed.
+
+    All descriptions should be max 10 to 15 words long, one sentence.
 """
 
 

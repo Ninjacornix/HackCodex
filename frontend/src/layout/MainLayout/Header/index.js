@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box, ButtonBase } from '@mui/material';
+import { Avatar, Box, Button, ButtonBase } from '@mui/material';
 
 import { useState } from 'react';
 
@@ -13,6 +13,8 @@ import NotificationSection from './NotificationSection';
 
 // assets
 import { IconLayoutSidebarLeftCollapse, IconLayoutSidebarLeftExpand } from '@tabler/icons';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -21,6 +23,16 @@ const Header = ({ handleLeftDrawerToggle }) => {
   const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen(!open);
+  };
+
+  const navigate = useNavigate();
+
+  const auth = useSelector((state) => state.auth);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    navigate('/login');
   };
 
   return (
@@ -68,8 +80,21 @@ const Header = ({ handleLeftDrawerToggle }) => {
       <Box sx={{ flexGrow: 1 }} />
 
       {/* notification & profile */}
-      <NotificationSection />
-      <ProfileSection />
+
+      {auth.access_token ? (
+        <>
+          {/* <NotificationSection /> */}
+          <ProfileSection
+            auth={{
+              name: auth.name,
+              email: auth.email,
+              imgSrc: auth.picture
+            }}
+          />
+        </>
+      ) : (
+        <Button onClick={handleLogin}>Login</Button>
+      )}
     </>
   );
 };

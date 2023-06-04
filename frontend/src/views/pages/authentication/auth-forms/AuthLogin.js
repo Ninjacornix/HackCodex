@@ -35,6 +35,7 @@ import Google from 'assets/images/icons/social-google.svg';
 // import useScriptR  ef from 'hooks/useScriptRef';
 import AnimateButton from 'ui-component/extended/AnimateButton';
 import { LOGIN } from 'store/actions';
+import { useNavigate } from 'react-router';
 
 // // assets
 // import Visibility from '@mui/icons-material/Visibility';
@@ -52,16 +53,15 @@ const FirebaseLogin = (/* { ...others } */) => {
   const [user, setUser] = useState(undefined);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const auth = useSelector((state) => state.auth);
 
   useEffect(() => {
-    console.log(auth);
-    if (auth.accessKey !== undefined) {
-      // redirectaj negdi nekako
-      alert('You are already logged in!!!');
+    if (auth.access_token) {
+      navigate('/');
     }
-  }, [auth]);
+  }, [auth, navigate]);
 
   useEffect(() => {
     console.log('user changed!');
@@ -119,8 +119,8 @@ const FirebaseLogin = (/* { ...others } */) => {
               variant="outlined"
               sx={{
                 color: 'grey.700',
-                backgroundColor: theme.palette.grey[50],
-                borderColor: theme.palette.grey[100]
+                backgroundColor: "#000000",
+                borderColor: "#000000"
               }}
             >
               <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }} alignItems="center">

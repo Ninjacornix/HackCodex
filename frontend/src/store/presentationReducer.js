@@ -19,6 +19,8 @@ const presentationReducer = (state = initialState, action) => {
           ...action.tableOfContents
         }
       };
+    case actionTypes.RESET_ALL:
+      return initialState;
     default:
       return state;
   }
