@@ -77,10 +77,6 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'landing',
-      element: <LandingPage />
-    },
-    {
       path: 'test-page',
       element: <TestPage />
     },
