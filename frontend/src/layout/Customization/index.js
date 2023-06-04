@@ -29,6 +29,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import SubCard from 'ui-component/cards/SubCard';
 import { SET_BORDER_RADIUS, SET_FONT_FAMILY } from 'store/actions';
 import { gridSpacing } from 'store/constant';
+import Chat from 'ui-component/chat/Chat';
 
 // concat 'px'
 function valueText(value) {
@@ -112,10 +113,26 @@ const Customization = () => {
         }}
       >
         <PerfectScrollbar component="div">
-          <Grid container spacing={gridSpacing} sx={{ p: 3 }}>
+          <Grid container spacing={gridSpacing} sx={{ p: 3, height: '100%' }}>
+            <Grid item xs={12} sx={{ height: '80%' }}>
+              <Typography variant="h3" sx={{ my: 2 }}>
+                Customize current slide
+              </Typography>
+              <Chat />
+            </Grid>
             <Grid item xs={12}>
+              <Typography variant="h3" sx={{ my: 2 }}>
+                Generate Magic slides
+              </Typography>
+              <Typography variant="body1">
+                Press
+                <Button sx={{ mx: 1 }} variant="contained" color="primary" endIcon={<IconNorthStar />}>
+                  Magic
+                </Button>
+                and create a wild slide!
+              </Typography>
               {/* font family */}
-              <SubCard title="Customize current slide">
+              {/* <SubCard title="Customize current slide">
                 <FormControl>
                   <TextField
                     fullWidth
@@ -134,7 +151,7 @@ const Customization = () => {
                 <Button onClick={magicPrompt} variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconNorthStar/>}>
                   Magic
                 </Button>
-              </SubCard>
+              </SubCard> */}
             </Grid>
           </Grid>
         </PerfectScrollbar>

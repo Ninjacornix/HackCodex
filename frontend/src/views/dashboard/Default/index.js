@@ -12,6 +12,7 @@ import PopularCard from './PopularCard';
 import EarningCard from './EarningCard';
 import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
 import TotalOrderLineChartCard from './TotalOrderLineChartCard';
+import GenerationSheet from 'ui-component/modal/GenerationSheet';
 // Mock filesystem data
 // Will be fetched from backend (todo)
 const data = {
@@ -71,24 +72,37 @@ const Dashboard = () => {
 
   const [fileStructure, setFileStructure] = useState(data);
   const [selectedFolder, setSelectedFolder] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   console.log(selectedFolder);
 
+  const handleNewProjectClick = () => {
+    setModalOpen(true);
+  };
+
   return (
-    <Grid container spacing={gridSpacing}>
-      <Grid item xs={12}>
-        <Grid container spacing={gridSpacing}>
-          <Grid item xs={8} md={8}>
-            <TotalGrowthBarChart selectedFolder={selectedFolder} isLoading={isLoading} />
-          </Grid>
-          <Grid item xs={2} md={4}>
-            <PopularCard data={fileStructure} selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder} isLoading={isLoading} />
-            <div style={{ height: '50px' }}></div>
-            <TotalOrderLineChartCard selectedFolder={selectedFolder} isLoading={isLoading} />
+    <>
+      <GenerationSheet modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <Grid container spacing={gridSpacing}>
+        <Grid item xs={12}>
+          <Grid container spacing={gridSpacing}>
+            <Grid item xs={8} md={8}>
+              <TotalGrowthBarChart newProjectClick={handleNewProjectClick} selectedFolder={selectedFolder} isLoading={isLoading} />
+            </Grid>
+            <Grid item xs={2} md={4}>
+              <PopularCard
+                data={fileStructure}
+                selectedFolder={selectedFolder}
+                setSelectedFolder={setSelectedFolder}
+                isLoading={isLoading}
+              />
+              <div style={{ height: '50px' }}></div>
+              <TotalOrderLineChartCard selectedFolder={selectedFolder} isLoading={isLoading} />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 
