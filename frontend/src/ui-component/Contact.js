@@ -10,8 +10,7 @@ class Contact extends React.Component {
               <h1 className="section-title text-center">Get In Touch</h1>
               <div className="section-title-border margin-t-20"></div>
               <p className="section-subtitle text-muted text-center font-secondary padding-t-30">
-                We thrive when coming up with innovative ideas but also understand that a smart concept should be supported with measurable
-                results.
+                We value your feedback. Please send us your comments and suggestions.
               </p>
             </div>
           </div>
@@ -20,19 +19,19 @@ class Contact extends React.Component {
               <div className="mt-4 pt-4">
                 <p className="mt-4">
                   <span className="h5">Office Address 1:</span>
-                  <br /> <span className="text-muted d-block mt-2">4461 Cedar Street Moro, AR 72368</span>
+                  <br /> <span className="text-muted d-block mt-2">Bijenička cesta 32 <br />10000 Zagreb</span>
                 </p>
                 <p className="mt-4">
                   <span className="h5">Office Address 2:</span>
                   <br />{' '}
                   <span className="text-muted d-block mt-2">
-                    2467 Swick Hill Street <br />
-                    New Orleans, LA 70171
+                    Unska ulica 3 <br />
+                    10000 Zagreb
                   </span>
                 </p>
                 <p className="mt-4">
                   <span className="h5">Working Hours:</span>
-                  <br /> <span className="text-muted d-block mt-2">9:00AM To 6:00PM</span>
+                  <br /> <span className="text-muted d-block mt-2">9:00AM - 6:00PM</span>
                 </p>
               </div>
             </div>
