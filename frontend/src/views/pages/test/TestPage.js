@@ -1,8 +1,10 @@
-import { Button } from '@mui/material';
+import { Button, Typography } from '@mui/material';
+import { margin } from '@mui/system';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useFetchTableOfContents } from 'services/toc.service';
+import Editor from 'views/editor/Editor';
 
 const TestPage = () => {
   const fetchTableOfContents = useFetchTableOfContents();
@@ -10,11 +12,10 @@ const TestPage = () => {
 
   return (
     <div>
-      <div>{JSON.stringify(pres.tableOfContents.data)}</div>
-      <Link to={'/'}>Naslovna</Link>
-      <Button
+      {/* <div>{JSON.stringify(pres.tableOfContents.data)}</div>
+      <Link to={'/'}>Naslovna</Link> */}
+      {/* <Button
         onClick={() => {
-          console.log('AAAAAAA');
           fetchTableOfContents(
             'AI',
             'AI',
@@ -26,7 +27,11 @@ const TestPage = () => {
         }}
       >
         Start fetch TOC
-      </Button>
+      </Button> */}
+      <Typography variant="h1" sx={{ mb: 1 }}>
+        Test page
+      </Typography>
+      <Editor />
     </div>
   );
 };
