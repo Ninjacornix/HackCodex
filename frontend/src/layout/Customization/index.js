@@ -19,7 +19,9 @@ import {
   MenuItem
 } from '@mui/material';
 import { IconMessage2 } from '@tabler/icons';
-
+import Button from '@mui/material/Button';
+import { IconNorthStar } from '@tabler/icons';
+import { IconSend } from '@tabler/icons';
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
@@ -110,11 +112,19 @@ const Customization = () => {
                     id="outlined-basic"
                     outlined
                     label="Type in your new prompt"
-                    value={textName}
-                    helperText="Please select your font family"
                     variant="outlined"
+                    onC
                   ></TextField>
                 </FormControl>
+                <Button variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconSend/>}>
+                  Send
+                </Button>
+                <Typography variant="subtitle1" sx={{ mt: 3 }}>
+                  or use
+                </Typography>
+                <Button variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconNorthStar/>}>
+                  Magic
+                </Button>
               </SubCard>
             </Grid>
           </Grid>

@@ -119,8 +119,8 @@ const FirebaseLogin = (/* { ...others } */) => {
               variant="outlined"
               sx={{
                 color: 'grey.700',
-                backgroundColor: theme.palette.grey[50],
-                borderColor: theme.palette.grey[100]
+                backgroundColor: "#000000",
+                borderColor: "#000000"
               }}
             >
               <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }} alignItems="center">
