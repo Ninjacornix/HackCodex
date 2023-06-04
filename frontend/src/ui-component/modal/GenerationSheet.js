@@ -4,10 +4,12 @@ import { Dialog, DialogTitle, Button, Box, TextField, Typography, IconButton, Fo
 import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './generationSheet.scss';
 import { useNavigate } from 'react-router';
 import { SET_PROMPT_DATA } from 'store/actions';
+import { useFetchSummary } from 'services/summarize.service';
+
 
 const GenerationSheet = (props) => {
   const theme = useTheme();
@@ -17,6 +19,7 @@ const GenerationSheet = (props) => {
   const design = ['naturalistic', 'conventional', 'geometric', 'abstract'];
 
   const dispatch = useDispatch();
+  const fetchSummary = useFetchSummary();
   const navigate = useNavigate();
   // const [type, setType] = useState(types[0]);
   // const [numberOfSlides, setNumberOfSlides] = useState(numSlides[0]);
@@ -44,8 +47,17 @@ const GenerationSheet = (props) => {
     handleClose();
 
     // TODO Kruno
-    // navigate()
+
+    //console.log(pres);
+    fetchSummary(
+      pres.text || '',
+      pres.urls || ['https://en.wikipedia.org/wiki/Competitive_programming', 'https://en.wikipedia.org/wiki/Artificial_intelligence']);
+    navigate('/test-page');
+    // console.log(pres);
+
   };
+  const pres = useSelector((state) => state.presentation);
+
 
   useEffect(() => {
     setModalOpen(props.modalOpen);
@@ -70,11 +82,11 @@ const GenerationSheet = (props) => {
   const isValidUrl = (urlString) => {
     var urlPattern = new RegExp(
       '^(https?:\\/\\/)?' + // validate protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
-        '(\\#[-a-z\\d_]*)?$',
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+      '(\\#[-a-z\\d_]*)?$',
       'i'
     ); // validate fragment locator
     return !!urlPattern.test(urlString);
