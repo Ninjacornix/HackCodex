@@ -32,7 +32,7 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'test-page',
+      path: 'editor',
       element: <TestPage />
     },
     {

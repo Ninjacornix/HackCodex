@@ -17,7 +17,6 @@ import { IconBadgeCc, IconFileDescription, IconPhoto, IconTex } from '@tabler/ic
 // ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
 
 const NavItem = ({ item, level }) => {
-  //console.log(item);
   const theme = useTheme();
   const dispatch = useDispatch();
   const customization = useSelector((state) => state.customization);
@@ -27,6 +26,7 @@ const NavItem = ({ item, level }) => {
     dispatch({ type: MENU_OPEN, id });
     if (matchesSM) dispatch({ type: SET_MENU, opened: false });
   };
+
 
   let icon = null;
 

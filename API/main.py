@@ -123,6 +123,16 @@ async def _make_slide(request: Request, secret: str = ""):
     return make_slide(title, theme, summary, slide_json)
 
 
+@app.get('/make_slide')
+async def _make_slide(request: Request,
+                      title: str,
+                      theme: str,
+                      summary: str,
+                      slide_json: str,
+                      secret: str = ""):
+
+    return make_slide(title, theme, summary, slide_json)
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

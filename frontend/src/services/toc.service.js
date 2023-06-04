@@ -7,6 +7,9 @@ export const useFetchTableOfContents = () => {
 
   return async (theme, title, context) => {
     console.log('fetch toc called!');
+    setTimeout(() => {
+      events.close();
+    }, 60 * 1000);
 
     const events = new EventSource(
       `${process.env.REACT_APP_API_URL}/make_toc?theme=${theme}&title=${title}&context=${context}&secret=${auth.access_token}`
