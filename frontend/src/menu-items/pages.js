@@ -6,34 +6,70 @@ const icons = {
   IconKey
 };
 
-// ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
+// ==============================|| MENU ITEMS ||============================== //
 
 const pages = {
-  id: 'pages',
-  title: 'Pages',
-  caption: 'Pages Caption',
-  type: 'group',
-  children: [
+  title: 'uwwwuuu',
+  sections: [
     {
-      id: 'authentication',
-      title: 'Authentication',
-      type: 'collapse',
-      icon: icons.IconKey,
-
-      children: [
+      title: 'Introduction',
+      slides: [
         {
-          id: 'login3',
-          title: 'Login',
-          type: 'item',
-          url: '/pages/login/login3',
-          target: true
+          type: 'titleSlide',
+          title: 'What is AI?'
         },
         {
-          id: 'register3',
-          title: 'Register',
-          type: 'item',
-          url: '/pages/register/register3',
-          target: true
+          type: 'textSlide',
+          title: 'Definition of AI',
+          description:
+            'Artificial Intelligence (AI) is the simulation of human intelligence processes by machines, especially computer systems.'
+        },
+        {
+          type: 'imageHalfSlide',
+          title: 'Types of AI',
+          description: 'There are two types of AI: weak/narrow AI and strong/general AI.',
+          image_detailed_desc:
+            'Weak/narrow AI is designed to perform a specific task, like playing chess or recognizing speech. Strong/general AI, on the other hand, is designed to perform any intellectual task that a human can.'
+        }
+      ]
+    },
+    {
+      title: 'Applications of AI',
+      slides: [
+        {
+          type: 'titleSlide',
+          title: 'How is AI used today?'
+        },
+        {
+          type: 'textSlide',
+          title: 'Real-world Examples of AI',
+          description: 'AI is used to enhance many facets of our daily lives, including healthcare, finance, and customer service.'
+        },
+        {
+          type: 'imageFullSlide',
+          title: 'AI and Healthcare',
+          image_detailed_desc:
+            'AI is being used to diagnose cancer, identify genetic disorders, and even detect heart disease before symptoms appear.'
+        }
+      ]
+    },
+    {
+      title: 'Future of AI',
+      slides: [
+        {
+          type: 'titleSlide',
+          title: 'AI and the Future'
+        },
+        {
+          type: 'textSlide',
+          title: 'Challenges of AI',
+          description: 'As AI becomes more advanced, there are concerns about its impact on employment, privacy, and security.'
+        },
+        {
+          type: 'imageQuarterSlide',
+          title: 'AI and Jobs',
+          description: 'Some jobs might become obsolete with the rise of AI, but new jobs will also be created.',
+          image_detailed_desc: 'For example, AI engineers, data analysts, and machine trainers will be in high demand in the future.'
         }
       ]
     }

@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { googleLogout } from '@react-oauth/google';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -34,29 +36,33 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import UpgradePlanCard from './UpgradePlanCard';
-import User1 from 'assets/images/users/user-round.svg';
 
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
+import { RESET_ALL } from 'store/actions';
 
 // ==============================|| PROFILE MENU ||============================== //
 
-const ProfileSection = () => {
+const ProfileSection = ({ auth }) => {
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [sdm, setSdm] = useState(true);
-  const [value, setValue] = useState('');
+  // const [value, setValue] = useState('');
   const [notification, setNotification] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [open, setOpen] = useState(false);
+
   /**
    * anchorRef is used on different componets and specifying one type leads to other components throwing an error
    * */
   const anchorRef = useRef(null);
   const handleLogout = async () => {
-    console.log('Logout');
+    googleLogout();
+    dispatch({ type: RESET_ALL, action: {} });
+    navigate('/');
   };
 
   const handleClose = (event) => {
@@ -95,14 +101,14 @@ const ProfileSection = () => {
           alignItems: 'center',
           borderRadius: '27px',
           transition: 'all .2s ease-in-out',
-          borderColor: theme.palette.primary.light,
-          backgroundColor: theme.palette.primary.light,
+          borderColor: '#000000',
+          backgroundColor: '#604BA0',
           '&[aria-controls="menu-list-grow"], &:hover': {
-            borderColor: theme.palette.primary.main,
-            background: `${theme.palette.primary.main}!important`,
+            borderColor: '#000000',
+            background: '#604BA0 !important',
             color: theme.palette.primary.light,
             '& svg': {
-              stroke: theme.palette.primary.light
+              stroke: '#000000'
             }
           },
           '& .MuiChip-label': {
@@ -111,7 +117,7 @@ const ProfileSection = () => {
         }}
         icon={
           <Avatar
-            src={User1}
+            srcSet={auth.imgSrc}
             sx={{
               ...theme.typography.mediumAvatar,
               margin: '8px 0 8px 8px !important',
@@ -123,7 +129,7 @@ const ProfileSection = () => {
             color="inherit"
           />
         }
-        label={<IconSettings stroke={1.5} size="1.5rem" color={theme.palette.primary.main} />}
+        label={<IconSettings stroke={1.5} size="1.5rem" color={theme.palette.primary.light} />}
         variant="outlined"
         ref={anchorRef}
         aria-controls={open ? 'menu-list-grow' : undefined}
@@ -155,16 +161,16 @@ const ProfileSection = () => {
               <ClickAwayListener onClickAway={handleClose}>
                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                   <Box sx={{ p: 2 }}>
-                    <Stack>
+                    <Stack sx={{ mb: 2 }}>
                       <Stack direction="row" spacing={0.5} alignItems="center">
-                        <Typography variant="h4">Good Morning,</Typography>
+                        <Typography variant="h4">Hello,</Typography>
                         <Typography component="span" variant="h4" sx={{ fontWeight: 400 }}>
-                          Johne Doe
+                          {auth.name}
                         </Typography>
                       </Stack>
-                      <Typography variant="subtitle2">Project Admin</Typography>
+                      <Typography variant="subtitle2">{auth.email}</Typography>
                     </Stack>
-                    <OutlinedInput
+                    {/* <OutlinedInput
                       sx={{ width: '100%', pr: 1, pl: 2, my: 2 }}
                       id="input-search-profile"
                       value={value}
@@ -179,16 +185,16 @@ const ProfileSection = () => {
                       inputProps={{
                         'aria-label': 'weight'
                       }}
-                    />
+                    /> */}
                     <Divider />
                   </Box>
                   <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
                     <Box sx={{ p: 2 }}>
                       <UpgradePlanCard />
-                      <Divider />
+                      {/* <Divider />
                       <Card
                         sx={{
-                          bgcolor: theme.palette.primary.light,
+                          bgcolor: theme.palette.primary.dark,
                           my: 2
                         }}
                       >
@@ -227,7 +233,7 @@ const ProfileSection = () => {
                             </Grid>
                           </Grid>
                         </CardContent>
-                      </Card>
+                      </Card> */}
                       <Divider />
                       <List
                         component="nav"
@@ -255,7 +261,7 @@ const ProfileSection = () => {
                           </ListItemIcon>
                           <ListItemText primary={<Typography variant="body2">Account Settings</Typography>} />
                         </ListItemButton>
-                        <ListItemButton
+                        {/* <ListItemButton
                           sx={{ borderRadius: `${customization.borderRadius}px` }}
                           selected={selectedIndex === 1}
                           onClick={(event) => handleListItemClick(event, 1, '#')}
@@ -282,7 +288,7 @@ const ProfileSection = () => {
                               </Grid>
                             }
                           />
-                        </ListItemButton>
+                        </ListItemButton> */}
                         <ListItemButton
                           sx={{ borderRadius: `${customization.borderRadius}px` }}
                           selected={selectedIndex === 4}

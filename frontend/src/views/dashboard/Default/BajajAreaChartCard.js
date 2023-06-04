@@ -26,7 +26,7 @@ const BajajAreaChartCard = () => {
       ...chartData.options,
       colors: [orangeDark],
       tooltip: {
-        theme: 'light'
+        theme: 'dark'
       }
     };
     ApexCharts.exec(`support-chart`, 'updateOptions', newSupportChart);

@@ -10,12 +10,12 @@ import Breadcrumbs from 'ui-component/extended/Breadcrumbs';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Customization from '../Customization';
-import navigation from 'menu-items';
 import { drawerWidth } from 'store/constant';
 import { SET_MENU } from 'store/actions';
 
 // assets
 import { IconChevronRight } from '@tabler/icons';
+import { useMenuItems } from 'menu-items';
 
 // styles
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
@@ -63,6 +63,8 @@ const MainLayout = () => {
     dispatch({ type: SET_MENU, opened: !leftDrawerOpened });
   };
 
+  const navigation = useMenuItems();
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -73,7 +75,7 @@ const MainLayout = () => {
         color="inherit"
         elevation={0}
         sx={{
-          bgcolor: theme.palette.background.default,
+          bgcolor: '#0f1120',
           transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
         }}
       >

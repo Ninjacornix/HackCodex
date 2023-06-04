@@ -11,6 +11,7 @@ import themes from 'themes';
 
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
+import LandingRouter from 'routes/LandingPageRouter';
 
 // ==============================|| APP ||============================== //
 
