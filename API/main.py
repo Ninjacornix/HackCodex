@@ -1,3 +1,4 @@
+from make_slide import make_slide
 from fs import ls, mkdir, rm
 import asyncio
 from pprint import pprint
@@ -106,6 +107,20 @@ async def _fs(request: Request, secret: str = ""):
 
     elif command == "rm":
         return rm(body["id"], body["path"])
+
+
+@app.post('/make_slide')
+async def _make_slide(request: Request, secret: str = ""):
+
+    body = await request.body()
+    body = json.loads(body)
+
+    title = body["title"]
+    theme = body["theme"]
+    summary = body["summary"]
+    slide_json = body["slide_json"]
+
+    return make_slide(title, theme, summary, slide_json)
 
 
 if __name__ == "__main__":
