@@ -18,6 +18,10 @@ const LandingPageRouter = {
       path: '/landing',
       element: <HomeTwo />
     }
+    // {
+    //   path: '/editor',
+    //   element: <Editor />
+    // }
   ]
 };
 
