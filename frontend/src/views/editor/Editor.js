@@ -23,20 +23,29 @@ const Editor = () => {
 
   const tableOfContents = useSelector((state) => state.presentation.tableOfContents);
 
-  const page = store.addPage();
-
-  page.addElement({
-    type: 'image',
-    src: "http://placekitten.com/200/300",
-    width: 150,
-    height: 150,
-    x: 0,
-    y: 0
-  });
-
   useEffect(() => {
     if (tableOfContents.data && tableOfContents.isLoading == false) {
-      console.log(tableOfContents.data);
+      for (let i = 0; i < tableOfContents.data.sections.length; i++) {
+        for (let j = 0; j < tableOfContents.data.sections[i].slides.length; j++) {
+          const page = store.addPage();
+          page.addElement({
+            type: 'text',
+            text: tableOfContents.data.sections[i].slides[j].title,
+            x: 100,
+            y: 100,
+            width: 500,
+            height: 100,
+            fontSize: 40,
+            fill: '#000'
+          });
+        }
+      }
+
+      let arr = [];
+      for (let i = 0; i < store.pages.length; i++) {
+        arr.push(i);
+      }
+      
     }
   }, [tableOfContents]);
 

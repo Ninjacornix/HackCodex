@@ -7,6 +7,7 @@ import { Box, Chip, Drawer, Stack, useMediaQuery } from '@mui/material';
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { useSelector } from 'react-redux';
 
 // project imports
 import MenuList from './MenuList';
@@ -14,11 +15,26 @@ import LogoSection from '../LogoSection';
 import MenuCard from './MenuCard';
 import { drawerWidth } from 'store/constant';
 
+import LoadingButton from '@mui/lab/LoadingButton';
+import { IconSend } from '@tabler/icons';
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
 const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
   const theme = useTheme();
   const matchUpMd = useMediaQuery(theme.breakpoints.up('md'));
+
+  const [loading, setLoading] = useState(false);
+
+  const isLoaded = useSelector((state) => state.presentation.tableOfContents.isLoaded);
+
+  useEffect(() => {
+    if(isLoaded == false) {
+      setLoading(true);
+    }
+  }, [isLoaded]);
 
   const drawer = (
     <>
@@ -38,7 +54,14 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
         >
           <MenuList />
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
+          <LoadingButton
+                variant="contained"
+                size="small"
+                loading = {!loading}
+                loadingIndicator="Generating..."
+                >
+                  <span>Generated!</span>
+                </LoadingButton>
           </Stack>
         </PerfectScrollbar>
       </BrowserView>
@@ -47,7 +70,15 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
           <MenuList />
 
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            <Chip label={process.env.REACT_APP_VERSION} disabled chipcolor="secondary" size="small" sx={{ cursor: 'pointer' }} />
+            {}
+          <LoadingButton
+                variant="contained"
+                size="small"
+                loading = {!loading}
+                loadingIndicator="Generating..."
+                >
+                  <span>Generated!</span>
+                </LoadingButton>
           </Stack>
         </Box>
       </MobileView>

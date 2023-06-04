@@ -65,8 +65,6 @@ function AddFolderDialog(props) {
   );
 }
 
-
-
 const PopularCard = ({ isLoading, data, selectedFolder, setSelectedFolder }) => {
   const theme = useTheme();
 
@@ -75,7 +73,6 @@ const PopularCard = ({ isLoading, data, selectedFolder, setSelectedFolder }) => 
   const handleAddFolder = (selectedFolder) => {
     { selectedFolder ? handleOpenModal() : null }
   }
-
 
   const [openModal, setOpenModal] = useState(false);
   const handleOpenModal = () => setOpenModal(true);
@@ -93,22 +90,12 @@ const PopularCard = ({ isLoading, data, selectedFolder, setSelectedFolder }) => 
                 <Typography variant='h4'>My projects</Typography>
                 <Button onClick={() => handleAddFolder(selectedFolder)} >Add folder</Button>
                 <AddFolderDialog open={openModal} onClose={handleCloseModal} selectedFolder={selectedFolder} addFolderName={addFolderName} setAddFolderName={setAddFolderName}>
-
                   <Typography variant='h4'>Add folder</Typography>
-
                 </AddFolderDialog>
               </Stack>
-
               <TreeDataComponent data={data} setSelectedFolder={setSelectedFolder} />
             </Stack>
           </CardContent>
-
-          {/* <CardActions sx={{ p: 1.25, pt: 0, justifyContent: 'center' }}>
-            <Button size="small" disableElevation>
-              View All
-              <ChevronRightOutlinedIcon />
-            </Button>
-          </CardActions> */}
         </MainCard>
       )}
     </>
