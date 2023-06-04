@@ -14,54 +14,55 @@ import { IconChevronRight } from '@tabler/icons';
 import { useMenuItems } from 'menu-items';
 
 // styles
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
+const NoSidebarMain = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
   ...theme.typography.mainContent,
   borderBottomLeftRadius: 0,
   borderBottomRightRadius: 0,
-  marginLeft: 0,
-  marginRight: 0,
+  padding: 0,
   marginTop: 72,
-  transition: theme.transitions.create(
-    'margin',
-    open
-      ? {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen
-        }
-      : {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen
-        }
-  ),
+  marginRight: 0,
+  // transition: theme.transitions.create(
+  //   'margin',
+  //   open
+  //     ? {
+  //         easing: theme.transitions.easing.easeOut,
+  //         duration: theme.transitions.duration.enteringScreen
+  //       }
+  //     : {
+  //         easing: theme.transitions.easing.sharp,
+  //         duration: theme.transitions.duration.leavingScreen
+  //       }
+  // ),
   [theme.breakpoints.up('md')]: {
-    marginLeft: '0px',
-    width: `calc(100%)`
+    marginLeft: 0,
+    width: `100%`
   },
   [theme.breakpoints.down('md')]: {
-    marginLeft: '20px',
+    marginLeft: '0px',
     width: `calc(100%)`,
-    padding: '16px'
+    padding: '0px'
   },
   [theme.breakpoints.down('sm')]: {
-    marginLeft: '10px',
+    marginLeft: '0px',
     width: `calc(100%)`,
-    padding: '16px',
-    marginRight: '10px'
+    padding: '0px',
+    marginRight: '0px'
   }
 }));
 
 // ==============================|| MAIN LAYOUT ||============================== //
 
-const NoSidebarMainLayout = () => {
+const LandingPageLayout = () => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down('md'));
   // Handle left drawer
-  // const leftDrawerOpened = useSelector((state) => state.customization.opened);
+  const leftDrawerOpened = useSelector((state) => state.customization.opened);
 
+  console.log(theme.components.MuiButton);
   const navigation = useMenuItems();
 
   return (
-    <Box sx={{ display: 'flex', bgcolor: '#0f1120' }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       {/* header */}
       <AppBar
@@ -70,7 +71,8 @@ const NoSidebarMainLayout = () => {
         color="inherit"
         elevation={0}
         sx={{
-          bgcolor: '#0f1120'
+          bgcolor: '#0f1120',
+          transition: leftDrawerOpened ? theme.transitions.create('width') : 'none'
         }}
       >
         <Toolbar>
@@ -79,13 +81,14 @@ const NoSidebarMainLayout = () => {
       </AppBar>
 
       {/* main content */}
-      <Main theme={theme}>
+      <NoSidebarMain theme={theme} open={leftDrawerOpened}>
         {/* breadcrumb */}
         <Breadcrumbs separator={IconChevronRight} navigation={navigation} icon title rightAlign />
         <Outlet />
-      </Main>
+      </NoSidebarMain>
+      {/* <Customization /> */}
     </Box>
   );
 };
 
-export default NoSidebarMainLayout;
+export default LandingPageLayout;

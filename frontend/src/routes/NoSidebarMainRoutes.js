@@ -5,11 +5,13 @@ import Loadable from 'ui-component/Loadable';
 import TestPage from 'views/pages/test/TestPage';
 import About from 'views/pages/about/About';
 import LandingPage from 'views/landing/LandingPage';
+import { LandingPage as NewLandingPage } from 'views/pages/landing/LandingPage';
 import NoSidebarMainLayout from 'layout/NoSidebarMainLayout';
 
 import DashboardDefault from 'views/dashboard/Default';
 import SamplePage from 'views/sample-page';
 import SummaryTestPage from 'views/pages/test/SummaryTestPage';
+import HomeTwo from 'views/landing/LandingPage';
 // ==============================|| NO SIDEBAR ROUTING ||============================== //
 
 const NoSidebarMainRoutes = {
@@ -18,10 +20,10 @@ const NoSidebarMainRoutes = {
   children: [
     {
       path: '/',
-      element: <LandingPage />
+      element: <HomeTwo />
     },
     {
-      path: 'about',
+      path: '/about',
       element: <About />
     },
     {

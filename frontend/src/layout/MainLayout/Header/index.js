@@ -96,7 +96,9 @@ const Header = ({ handleLeftDrawerToggle }) => {
           />
         </>
       ) : (
-        <Button onClick={handleLogin}>Login</Button>
+        <Button onClick={handleLogin} color="secondary" variant="contained">
+          Login
+        </Button>
       )}
     </>
   );

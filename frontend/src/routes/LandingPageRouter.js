@@ -10,12 +10,14 @@ import HomeTwo from 'views/landing/LandingPage';
 import Editor from 'views/editor/Editor';
 
 import AuthLogin3 from 'views/pages/authentication/authentication3/Login3';
+import LandingPageLayout from 'layout/LandingPageLayout';
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
 
 const LandingPageRouter = {
   path: '/',
+  element: <LandingPageLayout />,
   children: [
     {
       path: '/',
