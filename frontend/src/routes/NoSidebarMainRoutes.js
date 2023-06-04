@@ -8,6 +8,8 @@ import LandingPage from 'views/landing/LandingPage';
 import NoSidebarMainLayout from 'layout/NoSidebarMainLayout';
 
 import DashboardDefault from 'views/dashboard/Default';
+import SamplePage from 'views/sample-page';
+import SummaryTestPage from 'views/pages/test/SummaryTestPage';
 // ==============================|| NO SIDEBAR ROUTING ||============================== //
 
 const NoSidebarMainRoutes = {
@@ -25,6 +27,14 @@ const NoSidebarMainRoutes = {
     {
       path: '/dashboard',
       element: <DashboardDefault />
+    },
+    {
+      path: '/sample-page',
+      element: <SamplePage />
+    },
+    {
+      path: '/summary-test',
+      element: <SummaryTestPage />
     }
   ]
 };

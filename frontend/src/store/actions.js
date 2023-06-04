@@ -10,7 +10,9 @@ export const LOGIN = '@auth/LOGIN';
 export const LOGOUT = '@auth/LOGOUT';
 
 // action - presentation reducer
+export const SET_PROMPT_DATA = '@presentation/PROMPT';
 export const SET_TOC = '@presentation/TOC';
+export const SET_SUMMARY = '@presentation/SUMMARY';
 
 // action - tokens reducer
 export const SET_TOKENS = '@tokens/SET_TOKENS';
