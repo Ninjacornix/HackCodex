@@ -86,9 +86,22 @@ const FirebaseLogin = (/* { ...others } */) => {
     console.log(response);
     // log the user, redirect to home screen
     setUser(response);
+
+    // redirect to /dashboard
+
+    // window.location.href = '/dashboard';
+
+    setTimeout(() => {
+      window.location.href = '/dashboard';
+    }, 500);
   };
   const googleError = (error) => {
     console.log(error);
+    // window.location.href = '/dashboard';
+
+    setTimeout(() => {
+      window.location.href = '/dashboard';
+    }, 500);
   };
 
   const googleHandler = useGoogleLogin({
@@ -119,8 +132,8 @@ const FirebaseLogin = (/* { ...others } */) => {
               variant="outlined"
               sx={{
                 color: 'grey.700',
-                backgroundColor: "#000000",
-                borderColor: "#000000"
+                backgroundColor: '#000000',
+                borderColor: '#000000'
               }}
             >
               <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }} alignItems="center">

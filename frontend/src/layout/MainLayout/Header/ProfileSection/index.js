@@ -57,7 +57,7 @@ const ProfileSection = ({ auth }) => {
   const handleLogout = async () => {
     googleLogout();
     dispatch({ type: RESET_ALL, action: {} });
-    navigate('/');
+    navigate('/landing');
   };
 
   const handleClose = (event) => {

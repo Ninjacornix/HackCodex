@@ -4,11 +4,7 @@ import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Grid, MenuItem, TextField, Typography } from '@mui/material';
-
-// third-party
-import ApexCharts from 'apexcharts';
-import Chart from 'react-apexcharts';
+import { Box, Button, Grid, MenuItem, Stack, TextField, Typography } from '@mui/material';
 
 // project imports
 import SkeletonTotalGrowthBarChart from 'ui-component/cards/Skeleton/TotalGrowthBarChart';
@@ -35,7 +31,7 @@ const status = [
 
 // ==============================|| DASHBOARD DEFAULT - TOTAL GROWTH BAR CHART ||============================== //
 
-const TotalGrowthBarChart = ({ isLoading }) => {
+const TotalGrowthBarChart = ({ newProjectClick, selectedFolder, isLoading }) => {
   const [value, setValue] = useState('today');
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
@@ -83,9 +79,6 @@ const TotalGrowthBarChart = ({ isLoading }) => {
     };
 
     // do not load chart when loading
-    if (!isLoading) {
-      ApexCharts.exec(`bar-chart`, 'updateOptions', newChartData);
-    }
   }, [navType, primary200, primaryDark, secondaryMain, secondaryLight, primary, darkLight, grey200, isLoading, grey500]);
 
   return (
@@ -94,34 +87,20 @@ const TotalGrowthBarChart = ({ isLoading }) => {
         <SkeletonTotalGrowthBarChart />
       ) : (
         <MainCard>
-          <Grid container spacing={gridSpacing}>
-            <Grid item xs={12}>
-              <Grid container alignItems="center" justifyContent="space-between">
-                <Grid item>
-                  <Grid container direction="column" spacing={1}>
-                    <Grid item>
-                      <Typography variant="subtitle2">Total Growth</Typography>
-                    </Grid>
-                    <Grid item>
-                      <Typography variant="h3">$2,324.00</Typography>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item>
-                  <TextField id="standard-select-currency" select value={value} onChange={(e) => setValue(e.target.value)}>
-                    {status.map((option) => (
-                      <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                      </MenuItem>
-                    ))}
-                  </TextField>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <Chart {...chartData} />
-            </Grid>
-          </Grid>
+          <Stack sx={{ height: 550 }} spacing={3}>
+            <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
+              {selectedFolder ? (
+                <Stack spacing={1}>
+                  <Typography variant="subtitle2">{selectedFolder?.path}</Typography>
+                  <Typography variant="h3">{selectedFolder?.name}</Typography>
+                </Stack>
+              ) : (
+                <Typography variant="h3">No folder selected</Typography>
+              )}
+              <Button onClick={newProjectClick}>New Project</Button>
+            </Stack>
+            {selectedFolder ? <Typography>Projekti</Typography> : null}
+          </Stack>
         </MainCard>
       )}
     </>

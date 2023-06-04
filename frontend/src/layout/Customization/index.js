@@ -55,6 +55,16 @@ const Customization = () => {
     setBorderRadius(newValue);
   };
 
+  const sendPrompt = () => {
+    //TODO: send prompt to backend
+    console.log('send prompt');
+  };
+
+  const magicPrompt = () => {
+    //TODO: magic prompt
+    console.log('magic prompt');
+  };
+
   useEffect(() => {
     dispatch({ type: SET_BORDER_RADIUS, borderRadius });
   }, [dispatch, borderRadius]);
@@ -124,15 +134,21 @@ const Customization = () => {
               {/* font family */}
               {/* <SubCard title="Customize current slide">
                 <FormControl>
-                  <TextField fullWidth id="outlined-basic" outlined label="Type in your new prompt" variant="outlined" onC></TextField>
+                  <TextField
+                    fullWidth
+                    id="outlined-basic"
+                    outlined
+                    label="Type in your new prompt"
+                    variant="outlined"
+                  ></TextField>
                 </FormControl>
-                <Button variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconSend />}>
+                <Button onClick={sendPrompt} variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconSend/>}>
                   Send
                 </Button>
                 <Typography variant="subtitle1" sx={{ mt: 3 }}>
                   or use
                 </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconNorthStar />}>
+                <Button onClick={magicPrompt} variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconNorthStar/>}>
                   Magic
                 </Button>
               </SubCard> */}

@@ -3,9 +3,8 @@ import { lazy } from 'react';
 // project imports
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
+
 import TestPage from 'views/pages/test/TestPage';
-import About from 'views/pages/about/About';
-import LandingPage from 'views/landing/LandingPage';
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
@@ -24,14 +23,6 @@ const MainRoutes = {
   element: <MainLayout />,
   children: [
     {
-      path: '/',
-      element: <DashboardDefault />
-    },
-    {
-      path: 'editor',
-      element: <DashboardDefault />
-    },
-    {
       path: 'utils',
       children: [
         {
@@ -39,6 +30,10 @@ const MainRoutes = {
           element: <UtilsTypography />
         }
       ]
+    },
+    {
+      path: 'test-page',
+      element: <TestPage />
     },
     {
       path: 'utils',
@@ -75,18 +70,6 @@ const MainRoutes = {
           element: <UtilsMaterialIcons />
         }
       ]
-    },
-    {
-      path: 'landing',
-      element: <LandingPage />
-    },
-    {
-      path: 'test-page',
-      element: <TestPage />
-    },
-    {
-      path: 'about',
-      element: <About />
     }
   ]
 };

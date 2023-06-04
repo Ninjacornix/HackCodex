@@ -1,6 +1,6 @@
 // ===========================|| DASHBOARD - TOTAL ORDER YEAR CHART ||=========================== //
 
-const chartData = {
+let chartData = {
   type: 'line',
   height: 90,
   options: {
@@ -43,8 +43,8 @@ const chartData = {
   },
   series: [
     {
-      name: 'series1',
-      data: [35, 44, 9, 54, 45, 66, 41, 69]
+      name: 'tokens',
+      data: []
     }
   ]
 };
