@@ -97,7 +97,7 @@ def make_slide(title, theme, summary, slide_json):
     else:
         return "error"
 
-    return prompt_n_texts(template, title, "", summary, slide_json, theme)
+    return prompt_n_texts(template, title, slide_json['type'], summary, slide_json, theme)
 
 
 if __name__ == "__main__":

@@ -39,27 +39,27 @@ const description = [
 
 const aboutUsData = [
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    img: 'https://i.imgur.com/SQ3UDt8.png', // https://i.i.imgur.com/SQ3UDt8.png.png
     title: 'Ivan Vlahov',
     description: 'the fastest web-developer'
   },
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    img: 'https://i.imgur.com/Bu9YUlU.png',
     title: 'Zvonimir Haramustek',
     description: 'the only back-end person'
   },
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    img: 'https://i.imgur.com/RuPq6bU.png',
     title: 'Milan Vrankić',
     description: 'director and multitasking master'
   },
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    img: 'https://i.imgur.com/qT6z7Si.png',
     title: 'Krunoslav Tomičić',
     description: 'crazy tester'
   },
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    img: 'https://i.imgur.com/u3Yol0t.png',
     title: 'Maja Milas',
     description: 'stray physicist'
   }
