@@ -62,7 +62,7 @@ const Editor = () => {
 
   return (
     <div className="bp4-dark">
-      <PolotnoContainer style={{ width: '75vw', height: '75vh', overflow: 'hidden' }}>
+      <PolotnoContainer style={{ height: '75vh', overflow: 'hidden' }}>
         <SidePanelWrap>
           <SidePanel store={store} />
         </SidePanelWrap>

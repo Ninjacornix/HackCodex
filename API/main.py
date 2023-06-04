@@ -8,6 +8,8 @@ from fastapi import FastAPI, Request
 
 from fastapi.middleware.cors import CORSMiddleware
 
+from return_usage import get_usage
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -54,6 +56,13 @@ async def make_toc(request: Request, theme: str, title: str, context: str = "", 
 
     return EventSourceResponse(event_generator())
 
+
+@app.get('/get_usage')
+async def _get_usage(request: Request, id: str, secret: str = ""):
+
+    print(secret)
+
+    return get_usage(id)
 
 if __name__ == "__main__":
     import uvicorn
