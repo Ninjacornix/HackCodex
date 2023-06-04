@@ -11,14 +11,18 @@ const Message = ({ sender, children }) => {
     <Card
       sx={{
         bgcolor: bgColor,
-        my: 0.5
+        my: 0.5,
+        maxWidth: '60%',
+        display: 'flex',
+        marginRight: '10px',
+        borderRadius: '16px',
+        p: '16px'
       }}
+      className={`message message-${sender}`}
     >
-      <CardContent>
-        <Typography variant="body2" color={textColor} align={textAlign}>
-          {children}
-        </Typography>
-      </CardContent>
+      <Typography variant="body2" color={textColor} align={textAlign} sx={{ width: '100%', wordWrap: 'break-word' }}>
+        {children}
+      </Typography>
     </Card>
   );
 };

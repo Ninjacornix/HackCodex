@@ -203,26 +203,10 @@ const ProfileSection = ({ auth }) => {
                           selected={selectedIndex === 4}
                           onClick={handleLogout}
                         >
-                          <ListItemButton
-                            sx={{ borderRadius: `${customization.borderRadius}px` }}
-                            selected={selectedIndex === 0}
-                            onClick={(event) => handleListItemClick(event, 0, '#')}
-                          >
-                            <ListItemIcon>
-                              <IconSettings stroke={1.5} size="1.3rem" />
-                            </ListItemIcon>
-                            <ListItemText primary={<Typography variant="body2">Settings</Typography>} />
-                          </ListItemButton>
-                          <ListItemButton
-                            sx={{ borderRadius: `${customization.borderRadius}px` }}
-                            selected={selectedIndex === 4}
-                            onClick={handleLogout}
-                          >
-                            <ListItemIcon>
-                              <IconLogout stroke={1.5} size="1.3rem" />
-                            </ListItemIcon>
-                            <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
-                          </ListItemButton>
+                          <ListItemIcon>
+                            <IconLogout stroke={1.5} size="1.3rem" />
+                          </ListItemIcon>
+                          <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
                         </ListItemButton>
                       </List>
                     </Box>
