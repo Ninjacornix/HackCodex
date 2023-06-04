@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import './generationSheet.scss';
 import { useNavigate } from 'react-router';
+import { SET_PROMPT_DATA } from 'store/actions';
 
 const GenerationSheet = () => {
   const theme = useTheme();
