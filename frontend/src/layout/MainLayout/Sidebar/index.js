@@ -28,13 +28,16 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const isLoaded = useSelector((state) => state.presentation.tableOfContents.isLoaded);
+  const isLoading = useSelector((state) => state.presentation.summary.isLoading);
 
   useEffect(() => {
-    if(isLoaded == false) {
+    if (isLoading == true) {
       setLoading(true);
     }
-  }, [isLoaded]);
+    if (isLoading == false) {
+      setLoading(false);
+    }
+  }, [isLoading]);
 
   const drawer = (
     <>
@@ -54,14 +57,14 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
         >
           <MenuList />
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-          <LoadingButton
-                variant="contained"
-                size="small"
-                loading = {!loading}
-                loadingIndicator="Generating..."
-                >
-                  <span>Generated!</span>
-                </LoadingButton>
+            <LoadingButton
+              variant="contained"
+              size="small"
+              loading={loading}
+              loadingIndicator="Generating..."
+            >
+              <span>Generated!</span>
+            </LoadingButton>
           </Stack>
         </PerfectScrollbar>
       </BrowserView>
@@ -70,15 +73,15 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
           <MenuList />
 
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            {}
-          <LoadingButton
-                variant="contained"
-                size="small"
-                loading = {!loading}
-                loadingIndicator="Generating..."
-                >
-                  <span>Generated!</span>
-                </LoadingButton>
+            { }
+            <LoadingButton
+              variant="contained"
+              size="small"
+              loading={loading}
+              loadingIndicator="Generating..."
+            >
+              <span>Generated!</span>
+            </LoadingButton>
           </Stack>
         </Box>
       </MobileView>

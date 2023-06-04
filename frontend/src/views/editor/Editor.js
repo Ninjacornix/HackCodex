@@ -15,6 +15,7 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { setColorsPresetFunc } from 'polotno/config';
+import { Button } from '@mui/material';
 
 const Editor = () => {
   const store = createStore({
@@ -45,7 +46,7 @@ const Editor = () => {
       for (let i = 0; i < store.pages.length; i++) {
         arr.push(i);
       }
-      
+
     }
   }, [tableOfContents]);
 
@@ -90,12 +91,19 @@ const Editor = () => {
     hideIcon();
   }, 100);
 
-  setInterval(() => {
-    console.log(JSON.stringify(store.toJSON()));
-  }, 5000);
+  // setInterval(() => {
+  //   console.log(JSON.stringify(store.toJSON()));
+  // }, 5000);
+
+  function handleAiMagic() {
+    // console.log('ai magic called!');
+    // console.log(JSON.stringify(store.toJSON()));
+  }
+
 
   return (
     <div className="bp4-dark">
+      <Button onClick={() => handleAiMagic()}>Ejajifaj</Button>
       <PolotnoContainer style={{ height: '75vh', overflow: 'hidden' }}>
         <SidePanelWrap>
           <SidePanel store={store} />
