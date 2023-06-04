@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useEffect } from 'react';
+
+// project imports
+import { useSelector } from 'react-redux';
+import { useFetchUserTokens } from 'services/tokens.service';
 
 // material-ui
 import { useTheme, styled } from '@mui/material/styles';
@@ -12,12 +17,14 @@ import Chart from 'react-apexcharts';
 import MainCard from 'ui-component/cards/MainCard';
 import SkeletonTotalOrderCard from 'ui-component/cards/Skeleton/EarningCard';
 
-import ChartDataMonth from './chart-data/total-order-month-line-chart';
 import ChartDataYear from './chart-data/total-order-year-line-chart';
 
 // assets
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined';
+
+import { IconCoin } from '@tabler/icons';
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
   backgroundColor: theme.palette.primary.dark,
@@ -64,12 +71,30 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 // ==============================|| DASHBOARD - TOTAL ORDER LINE CHART CARD ||============================== //
 
 const TotalOrderLineChartCard = ({ isLoading }) => {
+  const auth = useSelector((state) => state.auth);
+  const tokens = useSelector((state) => state.tokens);
   const theme = useTheme();
 
   const [timeValue, setTimeValue] = useState(false);
   const handleChangeTime = (event, newValue) => {
     setTimeValue(newValue);
   };
+
+
+  const [sum, setSum] = useState(0);
+  const data = ChartDataYear;
+  const fetchUserTokens = useFetchUserTokens();
+
+  useEffect(() => {
+    fetchUserTokens();
+    if(!tokens.tokens) return;
+    data.series[0].data = tokens.tokens;
+    let dat = 0;
+    for (let i = 0; i < tokens.tokens.length; i++) {
+      dat += tokens.tokens[i];
+    }
+    setSum(dat);
+  }, []);
 
   return (
     <>
@@ -92,29 +117,22 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                         mt: 1
                       }}
                     >
-                      <LocalMallOutlinedIcon fontSize="inherit" />
+                      <IconCoin fontSize="inherit" />
                     </Avatar>
                   </Grid>
-                  <Grid item>
-                    <Button
-                      disableElevation
-                      variant={timeValue ? 'contained' : 'text'}
-                      size="small"
-                      sx={{ color: 'inherit' }}
-                      onClick={(e) => handleChangeTime(e, true)}
-                    >
-                      Month
-                    </Button>
-                    <Button
-                      disableElevation
-                      variant={!timeValue ? 'contained' : 'text'}
-                      size="small"
-                      sx={{ color: 'inherit' }}
-                      onClick={(e) => handleChangeTime(e, false)}
-                    >
-                      Year
-                    </Button>
-                  </Grid>
+                  <Button
+                    sx={{
+                      color: theme.palette.primary[200],
+                      borderColor: theme.palette.primary[200],
+                      textTransform: 'capitalize',
+                      '&:hover ': { borderColor: theme.palette.primary[200], color: theme.palette.primary[200] }
+                    }}
+                    variant="fill"
+                    size="small"
+                    endIcon={<ChevronRightOutlinedIcon />}
+                  >
+                    Get more!
+                  </Button>
                 </Grid>
               </Grid>
               <Grid item sx={{ mb: 0.75 }}>
@@ -122,11 +140,7 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                   <Grid item xs={6}>
                     <Grid container alignItems="center">
                       <Grid item>
-                        {timeValue ? (
-                          <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>$108</Typography>
-                        ) : (
-                          <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>$961</Typography>
-                        )}
+                          <Typography sx={{ fontSize: '2.125rem', fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>{sum}</Typography>
                       </Grid>
                       <Grid item>
                         <Avatar
@@ -148,13 +162,13 @@ const TotalOrderLineChartCard = ({ isLoading }) => {
                             color: theme.palette.primary[200]
                           }}
                         >
-                          Total Order
+                          Total tokens used
                         </Typography>
                       </Grid>
                     </Grid>
                   </Grid>
                   <Grid item xs={6}>
-                    {timeValue ? <Chart {...ChartDataMonth} /> : <Chart {...ChartDataYear} />}
+                    <Chart {...data} />
                   </Grid>
                 </Grid>
               </Grid>

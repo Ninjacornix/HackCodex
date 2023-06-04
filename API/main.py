@@ -1,3 +1,4 @@
+from fs import ls, mkdir, rm
 import asyncio
 from pprint import pprint
 from sse_starlette.sse import EventSourceResponse
@@ -81,6 +82,31 @@ async def _get_summarised(request: Request, text: str, urls: str, secret: str = 
             yield x
 
     return EventSourceResponse(event_generator())
+
+
+@app.post('/fs')
+async def _fs(request: Request, secret: str = ""):
+    # get body of request
+
+    body = await request.body()
+
+    # convert to json
+
+    body = json.loads(body)
+
+    # get action
+
+    command = body["command"]
+
+    if command == "ls":
+        return list(ls(body["id"], body["path"]))
+
+    elif command == "mkdir":
+        return mkdir(body["id"], body["path"])
+
+    elif command == "rm":
+        return rm(body["id"], body["path"])
+
 
 if __name__ == "__main__":
     import uvicorn
