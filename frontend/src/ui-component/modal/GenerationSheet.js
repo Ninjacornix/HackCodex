@@ -35,12 +35,10 @@ const GenerationSheet = () => {
   const generatePresentation = () => {
     dispatch({
       type: SET_PROMPT_DATA,
-      action: {
-        title: presentationTitle,
-        theme: presentationTheme,
-        text: description,
-        urls
-      }
+      title: presentationTitle,
+      theme: presentationTheme,
+      text: description,
+      urls
     });
 
     handleClose();
