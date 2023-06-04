@@ -9,6 +9,8 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from return_usage import get_usage
+from summarize_web import get_summarised
+
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -63,6 +65,22 @@ async def _get_usage(request: Request, id: str, secret: str = ""):
     print(secret)
 
     return get_usage(id)
+
+
+@app.get('/get_summarised')
+async def _get_summarised(request: Request, text: str, urls: str, secret: str = ""):
+
+    async def event_generator():
+        for x in get_summarised(text, urls.split("|")):
+            if await request.is_disconnected():
+                break
+
+            if x == {}:
+                continue
+
+            yield x
+
+    return EventSourceResponse(event_generator())
 
 if __name__ == "__main__":
     import uvicorn
