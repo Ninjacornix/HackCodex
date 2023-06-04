@@ -31,7 +31,7 @@ const status = [
 
 // ==============================|| DASHBOARD DEFAULT - TOTAL GROWTH BAR CHART ||============================== //
 
-const TotalGrowthBarChart = ({ selectedFolder, isLoading }) => {
+const TotalGrowthBarChart = ({ newProjectClick, selectedFolder, isLoading }) => {
   const [value, setValue] = useState('today');
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
@@ -79,7 +79,6 @@ const TotalGrowthBarChart = ({ selectedFolder, isLoading }) => {
     };
 
     // do not load chart when loading
-
   }, [navType, primary200, primaryDark, secondaryMain, secondaryLight, primary, darkLight, grey200, isLoading, grey500]);
 
   return (
@@ -90,16 +89,17 @@ const TotalGrowthBarChart = ({ selectedFolder, isLoading }) => {
         <MainCard>
           <Stack sx={{ height: 550 }} spacing={3}>
             <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
-              {selectedFolder ?
+              {selectedFolder ? (
                 <Stack spacing={1}>
                   <Typography variant="subtitle2">{selectedFolder?.path}</Typography>
                   <Typography variant="h3">{selectedFolder?.name}</Typography>
                 </Stack>
-                : <Typography variant="h3">No folder selected</Typography>}
-              <Button>New Project</Button>
+              ) : (
+                <Typography variant="h3">No folder selected</Typography>
+              )}
+              <Button onClick={newProjectClick}>New Project</Button>
             </Stack>
-            {selectedFolder ?
-              <Typography>Projekti</Typography> : null}
+            {selectedFolder ? <Typography>Projekti</Typography> : null}
           </Stack>
         </MainCard>
       )}

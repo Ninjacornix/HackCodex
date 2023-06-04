@@ -9,7 +9,7 @@ import './generationSheet.scss';
 import { useNavigate } from 'react-router';
 import { SET_PROMPT_DATA } from 'store/actions';
 
-const GenerationSheet = () => {
+const GenerationSheet = (props) => {
   const theme = useTheme();
   // TODO: add other
   const types = ['informative / educational', 'sales / pitch', 'conference', 'meeting', 'inspirational'];
@@ -30,7 +30,7 @@ const GenerationSheet = () => {
   const [hasError, setHasError] = useState(false);
 
   // const [website, setWebsite] = useState('');
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(props.modalOpen);
 
   const generatePresentation = () => {
     dispatch({
@@ -47,7 +47,10 @@ const GenerationSheet = () => {
     // navigate()
   };
 
-  // Dalje treba raditi s ovim totalState-om ili samo slati ove pojedinacne digod kad se klikne submit
+  useEffect(() => {
+    setModalOpen(props.modalOpen);
+    console.log('New project clicked!');
+  }, [props.modalOpen]);
 
   const handleClose = () => {
     setModalOpen(false);
