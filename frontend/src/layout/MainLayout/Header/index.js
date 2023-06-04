@@ -2,21 +2,38 @@ import PropTypes from 'prop-types';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Avatar, Box, ButtonBase } from '@mui/material';
+import { Avatar, Box, Button, ButtonBase } from '@mui/material';
+
+import { useState } from 'react';
 
 // project imports
 import LogoSection from '../LogoSection';
-import SearchSection from './SearchSection';
 import ProfileSection from './ProfileSection';
 import NotificationSection from './NotificationSection';
 
 // assets
-import { IconMenu2 } from '@tabler/icons';
+import { IconLayoutSidebarLeftCollapse, IconLayoutSidebarLeftExpand } from '@tabler/icons';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
 const Header = ({ handleLeftDrawerToggle }) => {
   const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  const handleToggle = () => {
+    setOpen(!open);
+  };
+
+  const navigate = useNavigate();
+
+  const auth = useSelector((state) => state.auth);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+
+    navigate('/login');
+  };
 
   return (
     <>
@@ -40,29 +57,44 @@ const Header = ({ handleLeftDrawerToggle }) => {
               ...theme.typography.commonAvatar,
               ...theme.typography.mediumAvatar,
               transition: 'all .2s ease-in-out',
-              background: theme.palette.secondary.light,
-              color: theme.palette.secondary.dark,
+              background: '#31596A',
+              color: theme.palette.primary.light,
               '&:hover': {
-                background: theme.palette.secondary.dark,
-                color: theme.palette.secondary.light
+                background: '#31596A',
+                color: '#000000'
               }
             }}
-            onClick={handleLeftDrawerToggle}
+            onClick={() => {
+              handleLeftDrawerToggle();
+              handleToggle();
+            }}
             color="inherit"
           >
-            <IconMenu2 stroke={1.5} size="1.3rem" />
+            {open ? <IconLayoutSidebarLeftExpand stroke={1.5} /> : <IconLayoutSidebarLeftCollapse stroke={1.5} />}
           </Avatar>
         </ButtonBase>
       </Box>
 
       {/* header search */}
-      <SearchSection />
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
 
       {/* notification & profile */}
-      <NotificationSection />
-      <ProfileSection />
+
+      {auth.access_token ? (
+        <>
+          {/* <NotificationSection /> */}
+          <ProfileSection
+            auth={{
+              name: auth.name,
+              email: auth.email,
+              imgSrc: auth.picture
+            }}
+          />
+        </>
+      ) : (
+        <Button onClick={handleLogin}>Login</Button>
+      )}
     </>
   );
 };

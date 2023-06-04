@@ -1,0 +1,67 @@
+{
+  "title": "Crime and Punishment: The Bee Movie",
+  "sections": [
+    {
+      "title": "The World of Bees",
+      "slides": [
+        { "type": "titleSlide", "title": "Welcome to the World of Bees" },
+        {
+          "type": "textSlide",
+          "title": "Honey is Essential",
+          "description": "In the world of bees, honey is the most important thing. It's not just food - it's the basis of their entire society. Honey is what powers their flight and what keeps them alive during the winter months. Without it, the bees would not be able to survive."
+        },
+        {
+          "type": "imageFullSlide",
+          "title": "Structured Society",
+          "image_detailed_desc": "The bee society is highly structured, with specific job roles for each bee. There are Pollen Jocks who fly the flowers, Krelman who make honey, and even a Queen Bee who lays all the eggs."
+        },
+        {
+          "type": "imageHalfSlide",
+          "title": "Thinking Outside the Hive",
+          "description": "Despite the structured society, some bees still dream of doing something different.",
+          "image_detailed_desc": "Barry, a bee voiced by Jerry Seinfeld, decides to pursue a career outside of the traditional bee jobs and discovers that humans are taking their honey."
+        }
+      ]
+    },
+    {
+      "title": "The Lawsuit",
+      "slides": [
+        { "type": "titleSlide", "title": "Taking on the Human Race" },
+        {
+          "type": "textSlide",
+          "title": "Suing Humans",
+          "description": "Barry decides to sue the human race for stealing their honey. The bees hire a team of lawyers, who take on the case in court."
+        },
+        {
+          "type": "imageQuarterSlide",
+          "title": "Bee Movie Live",
+          "description": "In the middle of the trial, Barry appears on a talk show hosted by Bee Larry King.",
+          "image_detailed_desc": "Bee Larry King, voiced by Larry King, interviews Barry about the lawsuit."
+        },
+        {
+          "type": "imageHalfSlide",
+          "title": "Victory for the Bees",
+          "description": "After a series of comical events, the bees win the lawsuit and reclaim their honey.",
+          "image_detailed_desc": "Barry gives a speech to the bees, encouraging them to think and act for themselves. He realizes that bees don't have to conform to their structured society and can pursue their dreams."
+        }
+      ]
+    },
+    {
+      "title": "The Message",
+      "slides": [
+        { "type": "titleSlide", "title": "The Bee Movie's Message" },
+        {
+          "type": "imageQuarterSlide",
+          "title": "Thinking Outside the Hive",
+          "description": "The Bee Movie encourages us to think and act for ourselves. It shows that we don't have to conform to society's expectations and that we can pursue our dreams.",
+          "image_detailed_desc": "Barry and Vanessa, a human voiced by Renée Zellweger, fly around New York City in a bid to save the bee's honey."
+        },
+        {
+          "type": "textSlide",
+          "title": "The Importance of Honeybees",
+          "description": "The Bee Movie also highlights the importance of honeybees in our ecosystem. Without them, the world would be a much less colorful and flavorful place"
+        }
+      ]
+    }
+  ]
+}
