@@ -28,10 +28,6 @@ const MainRoutes = {
       element: <DashboardDefault />
     },
     {
-      path: 'editor',
-      element: <DashboardDefault />
-    },
-    {
       path: 'utils',
       children: [
         {
@@ -75,10 +71,6 @@ const MainRoutes = {
           element: <UtilsMaterialIcons />
         }
       ]
-    },
-    {
-      path: 'landing',
-      element: <LandingPage />
     },
     {
       path: 'test-page',
