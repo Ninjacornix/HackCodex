@@ -28,8 +28,6 @@ const NavCollapse = ({ menu, level }) => {
     newMenu.title = menu.image_detailed_desc;
   }
 
-  console.log(menu);
-
   const theme = useTheme();
   const customization = useSelector((state) => state.customization);
 

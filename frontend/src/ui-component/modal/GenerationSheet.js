@@ -46,7 +46,7 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
     fetchSummary(
       pres.text || '',
       pres.urls || ['https://en.wikipedia.org/wiki/Competitive_programming', 'https://en.wikipedia.org/wiki/Artificial_intelligence']);
-    navigate('/test-page');
+    navigate('/editor');
     // console.log(pres);
 
   };

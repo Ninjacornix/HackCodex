@@ -5,6 +5,8 @@ import { SidePanel } from 'polotno/side-panel';
 import { Workspace } from 'polotno/canvas/workspace';
 
 import { createStore } from 'polotno/model/store';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 import { useEffect } from 'react';
 
@@ -18,6 +20,34 @@ const Editor = () => {
   const store = createStore({
     key: 'nFA5H9elEytDyPyvKL7T'
   });
+
+  const tableOfContents = useSelector((state) => state.presentation.tableOfContents);
+
+  useEffect(() => {
+    if (tableOfContents.data && tableOfContents.isLoading == false) {
+      for (let i = 0; i < tableOfContents.data.sections.length; i++) {
+        for (let j = 0; j < tableOfContents.data.sections[i].slides.length; j++) {
+          const page = store.addPage();
+          page.addElement({
+            type: 'text',
+            text: tableOfContents.data.sections[i].slides[j].title,
+            x: 100,
+            y: 100,
+            width: 500,
+            height: 100,
+            fontSize: 40,
+            fill: '#000'
+          });
+        }
+      }
+
+      let arr = [];
+      for (let i = 0; i < store.pages.length; i++) {
+        arr.push(i);
+      }
+      
+    }
+  }, [tableOfContents]);
 
   // define your own function
   setColorsPresetFunc((store) => {
