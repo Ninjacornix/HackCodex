@@ -1,0 +1,28 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+
+  .message {
+    height: fit-content;
+
+    &-bot {
+      align-self: flex-start;
+    }
+
+    &-user {
+      align-self: flex-end;
+    }
+  }
+}
+
+.send-message-button {
+  &.disabled {
+    cursor: not-allowed;
+
+    svg {
+      filter: saturate(0);
+    }
+  }
+}
