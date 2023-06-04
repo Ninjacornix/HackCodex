@@ -60,6 +60,10 @@ const Editor = () => {
     hideIcon();
   }, 100);
 
+  setInterval(() => {
+    console.log(JSON.stringify(store.toJSON()));
+  }, 5000);
+
   return (
     <div className="bp4-dark">
       <PolotnoContainer style={{ height: '75vh', overflow: 'hidden' }}>

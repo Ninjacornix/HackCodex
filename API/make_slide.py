@@ -1,0 +1,202 @@
+
+def TITLE_SLIDE_TEMPLATE(l):
+    return """
+{
+  "width": 1280,
+  "height": 720,
+  "fonts": [],
+  "pages": [
+    {
+      "id": "GBhQqTHV3U",
+      "children": [
+        {
+          "id": "JDU25gKOAu",
+          "type": "text",
+          "name": "",
+          "opacity": 1,
+          "animations": [],
+          "visible": true,
+          "selectable": true,
+          "removable": true,
+          "alwaysOnTop": false,
+          "showInExport": true,
+          "x": 360.9999999949999,
+          "y": 142.5,
+          "width": 558,
+          "height": 85,
+          "rotation": 0,
+          "blurEnabled": false,
+          "blurRadius": 10,
+          "brightnessEnabled": false,
+          "brightness": 0,
+          "sepiaEnabled": false,
+          "grayscaleEnabled": false,
+          "shadowEnabled": false,
+          "shadowBlur": 5,
+          "shadowOffsetX": 0,
+          "shadowOffsetY": 0,
+          "shadowColor": "black",
+          "shadowOpacity": 1,
+          "draggable": true,
+          "resizable": true,
+          "contentEditable": true,
+          "styleEditable": true,
+          "text": \"""" +l[0]+"""\",
+          "placeholder": "",
+          "fontSize": 70,
+          "fontFamily": "Balsamiq Sans",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+          "textDecoration": "",
+          "fill": "rgba(255,255,255,1)",
+          "align": "center",
+          "verticalAlign": "top",
+          "strokeWidth": 0,
+          "stroke": "black",
+          "lineHeight": 1.2,
+          "letterSpacing": 0,
+          "backgroundEnabled": false,
+          "backgroundColor": "#7ED321",
+          "backgroundOpacity": 1,
+          "backgroundCornerRadius": 0.5,
+          "backgroundPadding": 0.5
+        },
+        {
+          "id": "t3h9hD937j",
+          "type": "text",
+          "name": "",
+          "opacity": 1,
+          "animations": [],
+          "visible": true,
+          "selectable": true,
+          "removable": true,
+          "alwaysOnTop": false,
+          "showInExport": true,
+          "x": 440.95121951719455,
+          "y": 654,
+          "width": 431,
+          "height": 66,
+          "rotation": 0,
+          "blurEnabled": false,
+          "blurRadius": 10,
+          "brightnessEnabled": false,
+          "brightness": 0,
+          "sepiaEnabled": false,
+          "grayscaleEnabled": false,
+          "shadowEnabled": false,
+          "shadowBlur": 5,
+          "shadowOffsetX": 0,
+          "shadowOffsetY": 0,
+          "shadowColor": "black",
+          "shadowOpacity": 1,
+          "draggable": true,
+          "resizable": true,
+          "contentEditable": true,
+          "styleEditable": true,
+          "text": \"""" +l[2]+ """\",
+          "placeholder": "",
+          "fontSize": 54,
+          "fontFamily": "Balsamiq Sans",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+          "textDecoration": "",
+          "fill": "rgba(255,255,255,1)",
+          "align": "center",
+          "verticalAlign": "top",
+          "strokeWidth": 0,
+          "stroke": "black",
+          "lineHeight": 1.2,
+          "letterSpacing": 0,
+          "backgroundEnabled": false,
+          "backgroundColor": "#7ED321",
+          "backgroundOpacity": 1,
+          "backgroundCornerRadius": 0.5,
+          "backgroundPadding": 0.5
+        },
+        {
+          "id": "PdVkjnuf3j",
+          "type": "text",
+          "name": "",
+          "opacity": 1,
+          "animations": [],
+          "visible": true,
+          "selectable": true,
+          "removable": true,
+          "alwaysOnTop": false,
+          "showInExport": true,
+          "x": 246.99999999499988,
+          "y": 227.5,
+          "width": 786,
+          "height": 265,
+          "rotation": 0,
+          "blurEnabled": false,
+          "blurRadius": 10,
+          "brightnessEnabled": false,
+          "brightness": 0,
+          "sepiaEnabled": false,
+          "grayscaleEnabled": false,
+          "shadowEnabled": false,
+          "shadowBlur": 5,
+          "shadowOffsetX": 0,
+          "shadowOffsetY": 0,
+          "shadowColor": "black",
+          "shadowOpacity": 1,
+          "draggable": true,
+          "resizable": true,
+          "contentEditable": true,
+          "styleEditable": true,
+          "text": \""""+l[1]+"""\",
+          "placeholder": "",
+          "fontSize": 220,
+          "fontFamily": "Cookie",
+          "fontStyle": "normal",
+          "fontWeight": "normal",
+          "textDecoration": "",
+          "fill": "rgba(19,134,108,1)",
+          "align": "center",
+          "verticalAlign": "top",
+          "strokeWidth": 0,
+          "stroke": "black",
+          "lineHeight": 1.2,
+          "letterSpacing": 0,
+          "backgroundEnabled": false,
+          "backgroundColor": "#7ED321",
+          "backgroundOpacity": 1,
+          "backgroundCornerRadius": 0.5,
+          "backgroundPadding": 0.5
+        }
+      ],
+      "width": "auto",
+      "height": "auto",
+      "background": "rgba(245,166,35,1)",
+      "bleed": 0
+    }
+  ],
+  "unit": "px",
+  "dpi": 72
+}    
+    """
+
+
+def make_TitleSlide():
+    return PROMPT_MAKE_SLIDE(
+
+
+def make_TextSlide():
+    pass
+
+
+def make_ImageHalfSlide():
+    pass
+
+
+def make_ImageFullSlide():
+    pass
+
+
+def make_ImageQuarterSlide():
+    pass
+
+
+def make_slide(title, theme, summary, slide_json):
+    pass
