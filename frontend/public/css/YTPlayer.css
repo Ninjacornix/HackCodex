@@ -237,17 +237,17 @@
 
 /*RASTER OVERLAY*/
 .YTPOverlay.raster {
-  background: url('free/images/raster.png');
+  background: url('images/raster.png');
 }
 
 .YTPOverlay.raster.retina {
-  background: url('free/images/raster@2x.png');
+  background: url('images/raster@2x.png');
 }
 
 .YTPOverlay.raster-dot {
-  background: url('free/images/raster_dot.png');
+  background: url('images/raster_dot.png');
 }
 
 .YTPOverlay.raster-dot.retina {
-  background: url('free/images/raster_dot@2x.png');
+  background: url('images/raster_dot@2x.png');
 }

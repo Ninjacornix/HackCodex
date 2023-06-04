@@ -15,54 +15,53 @@ import TotalOrderLineChartCard from './TotalOrderLineChartCard';
 // Mock filesystem data
 // Will be fetched from backend (todo)
 const data = {
-  "name": "root",
-  "type": "folder",
-  "path": "/root",
-  "contents": [
+  name: 'root',
+  type: 'folder',
+  path: '/root',
+  contents: [
     {
-      "name": "folder1",
-      "type": "folder",
-      "path": "/root/folder1",
-      "contents": [
+      name: 'folder1',
+      type: 'folder',
+      path: '/root/folder1',
+      contents: [
         {
-          "name": "file1.txt",
-          "type": "file",
-          "path": "/root/folder1/file1.txt"
+          name: 'file1.txt',
+          type: 'file',
+          path: '/root/folder1/file1.txt'
         },
         {
-          "name": "file2.txt",
-          "type": "file",
-          "path": "/root/folder1/file2.txt"
+          name: 'file2.txt',
+          type: 'file',
+          path: '/root/folder1/file2.txt'
         }
       ]
     },
     {
-      "name": "folder2",
-      "type": "folder",
-      "path": "/root/folder2",
-      "contents": [
+      name: 'folder2',
+      type: 'folder',
+      path: '/root/folder2',
+      contents: [
         {
-          "name": "folder3",
-          "type": "folder",
-          "path": "/root/folder2/folder3",
-          "contents": [
+          name: 'folder3',
+          type: 'folder',
+          path: '/root/folder2/folder3',
+          contents: [
             {
-              "name": "file3.txt",
-              "type": "file",
-              "path": "/root/folder2/folder3/file3.txt"
+              name: 'file3.txt',
+              type: 'file',
+              path: '/root/folder2/folder3/file3.txt'
             },
             {
-              "name": "file4.txt",
-              "type": "file",
-              "path": "/root/folder2/folder3/file4.txt"
+              name: 'file4.txt',
+              type: 'file',
+              path: '/root/folder2/folder3/file4.txt'
             }
           ]
         }
       ]
     }
   ]
-}
-
+};
 
 const Dashboard = () => {
   const [isLoading, setLoading] = useState(true);

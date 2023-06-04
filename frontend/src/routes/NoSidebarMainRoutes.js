@@ -7,6 +7,7 @@ import About from 'views/pages/about/About';
 import LandingPage from 'views/landing/LandingPage';
 import NoSidebarMainLayout from 'layout/NoSidebarMainLayout';
 
+import DashboardDefault from 'views/dashboard/Default';
 // ==============================|| NO SIDEBAR ROUTING ||============================== //
 
 const NoSidebarMainRoutes = {
@@ -14,16 +15,16 @@ const NoSidebarMainRoutes = {
   element: <NoSidebarMainLayout />,
   children: [
     {
-      path: 'landing',
+      path: '/',
       element: <LandingPage />
-    },
-    {
-      path: 'test-page',
-      element: <TestPage />
     },
     {
       path: 'about',
       element: <About />
+    },
+    {
+      path: '/dashboard',
+      element: <DashboardDefault />
     }
   ]
 };

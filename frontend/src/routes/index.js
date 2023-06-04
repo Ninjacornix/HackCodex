@@ -9,5 +9,5 @@ import LandingRouter from './LandingPageRouter';
 // ==============================|| ROUTING RENDER ||============================== //
 
 export default function ThemeRoutes() {
-  return useRoutes([MainRoutes, AuthenticationRoutes, NoSidebarMainRoutes, LandingRouter]);
+  return useRoutes([LandingRouter, AuthenticationRoutes, NoSidebarMainRoutes, MainRoutes]);
 }
