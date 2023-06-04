@@ -11,7 +11,7 @@ import { SET_PROMPT_DATA } from 'store/actions';
 import { useFetchSummary } from 'services/summarize.service';
 
 
-const GenerationSheet = (props) => {
+const GenerationSheet = ({ modalOpen, setModalOpen }) => {
   const theme = useTheme();
   // TODO: add other
   const types = ['informative / educational', 'sales / pitch', 'conference', 'meeting', 'inspirational'];
@@ -21,9 +21,6 @@ const GenerationSheet = (props) => {
   const dispatch = useDispatch();
   const fetchSummary = useFetchSummary();
   const navigate = useNavigate();
-  // const [type, setType] = useState(types[0]);
-  // const [numberOfSlides, setNumberOfSlides] = useState(numSlides[0]);
-  // const [designType, setDesignType] = useState(design[0]);
 
   const [presentationTitle, setPresentationTitle] = useState('');
   const [presentationTheme, setPresentationTheme] = useState('');
@@ -31,9 +28,6 @@ const GenerationSheet = (props) => {
 
   const [urls, setUrls] = useState(['']);
   const [hasError, setHasError] = useState(false);
-
-  // const [website, setWebsite] = useState('');
-  const [modalOpen, setModalOpen] = useState(props.modalOpen);
 
   const generatePresentation = () => {
     dispatch({
@@ -58,11 +52,6 @@ const GenerationSheet = (props) => {
   };
   const pres = useSelector((state) => state.presentation);
 
-
-  useEffect(() => {
-    setModalOpen(props.modalOpen);
-    console.log('New project clicked!');
-  }, [props.modalOpen]);
 
   const handleClose = () => {
     setModalOpen(false);

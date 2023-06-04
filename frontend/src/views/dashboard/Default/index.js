@@ -82,7 +82,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <GenerationSheet modalOpen={modalOpen} />
+      <GenerationSheet modalOpen={modalOpen} setModalOpen={setModalOpen} />
       <Grid container spacing={gridSpacing}>
         <Grid item xs={12}>
           <Grid container spacing={gridSpacing}>
