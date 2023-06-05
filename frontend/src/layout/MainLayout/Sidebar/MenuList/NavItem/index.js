@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { SET_CURRENT_SLIDE } from 'store/actions';
 import { forwardRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,13 +17,27 @@ import { IconBadgeCc, IconFileDescription, IconPhoto, IconTex } from '@tabler/ic
 
 // ==============================|| SIDEBAR MENU LIST ITEMS ||============================== //
 
-const NavItem = ({ item, level }) => {
+const NavItem = ({ item, level, searchIndex }) => {
+
   const theme = useTheme();
   const dispatch = useDispatch();
   const customization = useSelector((state) => state.customization);
   const matchesSM = useMediaQuery(theme.breakpoints.down('lg'));
+  const slides = useSelector((state) => state.slides);
 
   const itemHandler = (id) => {
+    if(searchIndex) {
+      console.log('searchIndex', searchIndex);
+      const foundIndex = slides.allSlides.findIndex((slide) => slide === searchIndex);
+      if(foundIndex > -1) {
+        dispatch({ type: SET_CURRENT_SLIDE, selectedSlide: foundIndex });
+      }
+    } else {
+      const foundIndex = slides.allSlides.findIndex((slide) => slide === id);
+      if(foundIndex > -1) {
+        dispatch({ type: SET_CURRENT_SLIDE, selectedSlide: foundIndex });
+      }
+    }
     dispatch({ type: MENU_OPEN, id });
     if (matchesSM) dispatch({ type: SET_MENU, opened: false });
   };

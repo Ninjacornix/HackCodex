@@ -28,13 +28,13 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const isLoading = useSelector((state) => state.presentation.summary.isLoading);
+  const isLoading = useSelector((state) => state.presentation.tableOfContents.isLoading);
 
   useEffect(() => {
-    if (isLoading == true) {
+    if (isLoading === true) {
       setLoading(true);
     }
-    if (isLoading == false) {
+    if (isLoading === false) {
       setLoading(false);
     }
   }, [isLoading]);

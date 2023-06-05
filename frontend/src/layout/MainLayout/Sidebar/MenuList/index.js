@@ -10,7 +10,7 @@ import { useMenuItems } from 'menu-items';
 const MenuList = () => {
   const menuItems = useMenuItems();
   const navItems = menuItems?.items[0]?.sections?.map((item) => {
-    return <NavGroup key={item.name} item={item} />;
+    return <NavGroup key={item.name} item={item}/>;
   });
 
   return <>{navItems}</>;
