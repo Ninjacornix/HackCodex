@@ -15,6 +15,7 @@ import { useCreateSlideContent } from 'services/slideCreator.service';
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
+import './editorOverride.scss';
 
 import { setColorsPresetFunc } from 'polotno/config';
 

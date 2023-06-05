@@ -109,15 +109,32 @@ async def _fs(request: Request, secret: str = ""):
         return rm(body["id"], body["path"])
 
 
+<<<<<<< HEAD
+=======
+# @app.post('/make_slide')
+# async def _make_slide(request: Request, secret: str = ""):
+
+#     body = await request.body()
+#     body = json.loads(body)
+
+#     title = body["title"]
+#     theme = body["theme"]
+#     summary = body["summary"]
+#     slide_json = body["slide_json"]
+
+#     return make_slide(title, theme, summary, slide_json)
+
+
+>>>>>>> 9dacb4371d401beaf3fe5bb17c1c9e4d0debd409
 @app.get('/make_slide')
 async def _make_slide(request: Request,
                       title: str,
                       theme: str,
                       summary: str,
-                      slide_json: str,
+                      _type: str,
                       secret: str = ""):
 
-    return make_slide(title, theme, summary, slide_json)
+    return make_slide(title, theme, summary, _type)
 
 if __name__ == "__main__":
     import uvicorn

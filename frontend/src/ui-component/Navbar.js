@@ -2,8 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
-
-
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -11,7 +9,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
       <div className="container">
         <a className="navbar-brand logo text-uppercase" href="/home-one">
-          Gungala Kalabungala
+          Prezakon
         </a>
         <button
           className="navbar-toggler"
@@ -58,7 +56,9 @@ const Navbar = () => {
                 {/* <button onClick={(e) => { e.preventDefault(); navigate('/login') }} type="button" className="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">
                   Login
                 </button> */}
-                <a href='/login' className="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Login</a>
+                <a href="/login" className="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">
+                  Login
+                </a>
               </li>
             </ul>
           </div>
@@ -67,6 +67,5 @@ const Navbar = () => {
     </nav>
   );
 };
-
 
 export default Navbar;
