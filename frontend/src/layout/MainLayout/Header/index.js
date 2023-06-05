@@ -89,7 +89,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
           {/* <NotificationSection /> */}
           <Button
             onClick={() => navigate('/dashboard')}
-            color="secondary"
+            color="primary"
             variant="outlined"
             sx={{ marginRight: '24px', borderRadius: '32px', borderWidth: '2px' }}
           >
@@ -104,7 +104,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
           />
         </>
       ) : (
-        <Button onClick={handleLogin} color="secondary" variant="contained">
+        <Button onClick={handleLogin} color="primary" variant="contained">
           Login
         </Button>
       )}

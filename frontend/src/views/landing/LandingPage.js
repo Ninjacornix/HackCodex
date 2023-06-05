@@ -16,6 +16,7 @@ import FooterLinks from '../../ui-component/FooterLinks';
 import Switcher from '../../ui-component/Switcher';
 import { Link } from 'react-router-dom';
 import Aux from './hoc/Aux_';
+import { Button } from '@mui/material';
 
 class HomeTwo extends React.Component {
   render() {
@@ -47,6 +48,15 @@ class HomeTwo extends React.Component {
                 <div className="row-100vw" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <div className="col-lg-8 center text-white text-center">
                     <h1 className="home-title">Creating presentations has never been easier</h1>
+                    <Button
+                      href="/dashboard"
+                      // onClick={() => navigate('/dashboard')}
+                      variant="contained"
+                      color="primary"
+                      className="btn btn-custom margin-t-30 waves-effect waves-light"
+                    >
+                      Get started <i className="mdi mdi-arrow-right"></i>
+                    </Button>
                     {/*<p className="padding-t-15 home-desc">Etiam sed.Interdum consequat proin vestibulum className at.</p>*/}
                   </div>
                 </div>

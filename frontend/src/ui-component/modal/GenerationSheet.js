@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router';
 import { SET_PROMPT_DATA } from 'store/actions';
 import { useFetchSummary } from 'services/summarize.service';
 
-
 const GenerationSheet = ({ modalOpen, setModalOpen }) => {
   const theme = useTheme();
   // TODO: add other
@@ -45,13 +44,12 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
     //console.log(pres);
     fetchSummary(
       pres.text || '',
-      pres.urls || ['https://en.wikipedia.org/wiki/Competitive_programming', 'https://en.wikipedia.org/wiki/Artificial_intelligence']);
+      pres.urls || ['https://en.wikipedia.org/wiki/Competitive_programming', 'https://en.wikipedia.org/wiki/Artificial_intelligence']
+    );
     navigate('/editor');
     // console.log(pres);
-
   };
   const pres = useSelector((state) => state.presentation);
-
 
   const handleClose = () => {
     setModalOpen(false);
@@ -71,11 +69,11 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
   const isValidUrl = (urlString) => {
     var urlPattern = new RegExp(
       '^(https?:\\/\\/)?' + // validate protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
-      '(\\#[-a-z\\d_]*)?$',
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+        '(\\#[-a-z\\d_]*)?$',
       'i'
     ); // validate fragment locator
     return !!urlPattern.test(urlString);
@@ -120,7 +118,7 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
 
         <Box sx={{ p: 2 }}>
           <Typography variant="h3">Add title</Typography>
-          <Typography variant="body2">Pojasnjenje...</Typography>
+          {/* <Typography variant="body2">Pojasnjenje...</Typography> */}
           <TextField
             sx={{ width: '100%', my: 1 }}
             id="presentation-title"
@@ -132,7 +130,7 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
 
         <Box sx={{ p: 2 }}>
           <Typography variant="h3">Add presentation theme</Typography>
-          <Typography variant="body2">Pojasnjenje...</Typography>
+          {/* <Typography variant="body2">Pojasnjenje...</Typography> */}
           <TextField
             sx={{ width: '100%', my: 1 }}
             id="presentation-theme"
@@ -144,7 +142,7 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
 
         <Box sx={{ p: 2 }}>
           <Typography variant="h3">Add text</Typography>
-          <Typography variant="body2">Pojasnjenje...</Typography>
+          {/* <Typography variant="body2">Pojasnjenje...</Typography> */}
           <TextField
             sx={{ width: '100%', my: 1 }}
             id="presentation-description"
@@ -157,7 +155,7 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
 
         <Box sx={{ p: 2 }}>
           <Typography variant="h3">Add URLs</Typography>
-          <Typography variant="body2">Pojasnjenje...</Typography>
+          {/* <Typography variant="body2">Pojasnjenje...</Typography> */}
           {urls.map((url, index) => {
             console.log('mapping url', url);
             return (
@@ -174,7 +172,11 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
                   endAdornment: (
                     <IconButton
                       onClick={(e) => setUrls(urls.filter((_, id) => index !== id))}
-                      sx={{ bgcolor: 'blue', borderRadius: '4px', border: '2px solid blue' }}
+                      sx={{
+                        bgcolor: '#2196f3',
+                        borderRadius: '4px',
+                        border: '2px  solid #2196f3'
+                      }}
                     >
                       <DeleteIcon htmlColor="#ffffff" />
                     </IconButton>
@@ -183,7 +185,7 @@ const GenerationSheet = ({ modalOpen, setModalOpen }) => {
               />
             );
           })}
-          <IconButton onClick={(e) => setUrls([...urls, ''])} sx={{ bgcolor: 'blue', borderRadius: '4px', border: '2px solid blue' }}>
+          <IconButton onClick={(e) => setUrls([...urls, ''])} sx={{ bgcolor: '#2196f3', borderRadius: '4px', border: '2px solid #2196f3' }}>
             <AddIcon htmlColor="#ffffff" />
           </IconButton>
         </Box>

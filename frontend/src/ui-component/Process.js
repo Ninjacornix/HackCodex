@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 const Process = () => {
   const theme = useTheme();
 
-
   return (
     <section className="section bg-light">
       <div className="container">
         <div className="row">
           <div className="col-lg-8 offset-lg-2">
-            <Typography variant='h2' color='#0f1120' sx={{ textAlign: 'center' }} >WORK PROCESS</Typography>
+            <Typography variant="h2" color="#0f1120" sx={{ textAlign: 'center' }}>
+              WORK PROCESS
+            </Typography>
             <div className="section-title-border margin-t-20"></div>
             <p className="section-subtitle text-muted text-center font-secondary padding-t-30">
               In an ideal world this website wouldn&apos;t exist, a client would acknowledge the importance of having web copy before the
@@ -48,7 +49,7 @@ const Process = () => {
             </div>
           </div>
           <div className="text-center mx-auto">
-            <Link to="/about" className="btn btn-custom waves-light waves-effect margin-t-50">
+            <Link to="/dashboard" className="btn btn-custom waves-light waves-effect margin-t-50">
               Get Started <i className="mdi mdi-arrow-right"></i>
             </Link>
           </div>
