@@ -109,8 +109,6 @@ async def _fs(request: Request, secret: str = ""):
         return rm(body["id"], body["path"])
 
 
-<<<<<<< HEAD
-=======
 # @app.post('/make_slide')
 # async def _make_slide(request: Request, secret: str = ""):
 
@@ -125,7 +123,6 @@ async def _fs(request: Request, secret: str = ""):
 #     return make_slide(title, theme, summary, slide_json)
 
 
->>>>>>> 9dacb4371d401beaf3fe5bb17c1c9e4d0debd409
 @app.get('/make_slide')
 async def _make_slide(request: Request,
                       title: str,

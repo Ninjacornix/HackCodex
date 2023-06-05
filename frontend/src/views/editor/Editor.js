@@ -3,7 +3,7 @@ import { Toolbar } from 'polotno/toolbar/toolbar';
 import { ZoomButtons } from 'polotno/toolbar/zoom-buttons';
 import { SidePanel } from 'polotno/side-panel';
 import { Workspace } from 'polotno/canvas/workspace';
-import {SET_ALL_SLIDES, SET_PAGES_INDEX} from 'store/actions';
+import { SET_ALL_SLIDES, SET_PAGES_INDEX } from 'store/actions';
 
 import { createStore } from 'polotno/model/store';
 import { useSelector } from 'react-redux';
@@ -22,7 +22,6 @@ import { setColorsPresetFunc } from 'polotno/config';
 import { store } from 'App';
 
 const Editor = () => {
-
   const tableOfContents = useSelector((state) => state.presentation.tableOfContents);
   const currentSlide = useSelector((state) => state.slides.selectedSlide);
   const pageIds = useSelector((state) => state.slides.pageIds);
@@ -37,8 +36,14 @@ const Editor = () => {
 
   useEffect(() => {
     console.log('table of contents', pageIds);
-    if (tableOfContents.data && tableOfContents.isLoading == false && tableOfContents.data.sections.length && pageIds.length && currentSlide != null) {
-      if(currentSlide == -1) {
+    if (
+      tableOfContents.data &&
+      tableOfContents.isLoading == false &&
+      tableOfContents.data.sections.length &&
+      pageIds.length &&
+      currentSlide != null
+    ) {
+      if (currentSlide == -1) {
         return;
       } else {
         const id = pageIds[currentSlide];
@@ -47,41 +52,50 @@ const Editor = () => {
     }
   }, [currentSlide, pageIds]);
 
-  useEffect(() => {
-    if (tableOfContents.data && tableOfContents.isLoading == false && tableOfContents.data.sections.length) {
-      let array = [];
-      let indexArray = [];
-      for (let i = 0; i < tableOfContents.data.sections.length; i++) {
-        for (let j = 0; j < tableOfContents.data.sections[i].slides.length; j++) {
-          array.push(tableOfContents.data.sections[i].slides[j].title);
-          const slide_json = tableOfContents.data.sections[i].slides[j];
-          crateSlideContent(title, theme, summary, slide_json);
-          
-          if (slideData && prev != JSON.parse(slideData).pages[0].children) {
-            const slideChildrenData = JSON.parse(slideData).pages[0].children;
-            console.log(JSON.parse(slideData).pages[0].children);
-            const page = store.addPage();
-            for (let k = 0; k < slideChildrenData.length; k++) {
-              page.addElement(slideChildrenData[k]);
-            }
-            indexArray.push(page.id);
-          }
+  const [staph, setStaph] = useState(false);
 
-          setPrev(JSON.parse(slideData).pages[0].children);
+  const isLoading = useSelector((state) => state.presentation.tableOfContents.isLoading);
+
+  useEffect(() => {
+    try {
+      store.setSize(1280, 720);
+      if (tableOfContents.data && tableOfContents.isLoading == false && tableOfContents.data.sections.length) {
+        if (staph == true) {
+          return;
+        }
+
+        setStaph(true);
+        let array = [];
+        let indexArray = [];
+        for (let i = 0; i < tableOfContents.data.sections.length; i++) {
+          for (let j = 0; j < tableOfContents.data.sections[i].slides.length; j++) {
+            array.push(tableOfContents.data.sections[i].slides[j].title);
+            const slide_json = tableOfContents.data.sections[i].slides[j];
+            crateSlideContent(title, theme, summary, slide_json);
+            if (slideData && prev != JSON.parse(slideData).pages[0].children) {
+              const slideChildrenData = JSON.parse(slideData).pages[0].children;
+              console.log(JSON.parse(slideData).pages[0].children);
+              const page = store.addPage();
+              for (let k = 0; k < slideChildrenData.length; k++) {
+                page.addElement(slideChildrenData[k]);
+              }
+              indexArray.push(page.id);
+            }
+            setPrev(JSON.parse(slideData).pages[0].children);
+          }
+        }
+        console.log('array', indexArray);
+        dispatch({ type: SET_PAGES_INDEX, pageIds: indexArray });
+        dispatch({ type: SET_ALL_SLIDES, allSlides: array });
+        let arr = [];
+        for (let i = 0; i < store.pages.length; i++) {
+          arr.push(i);
         }
       }
-
-      console.log('array', indexArray);
-      
-      dispatch({ type: SET_PAGES_INDEX, pageIds: indexArray });
-      dispatch({ type: SET_ALL_SLIDES, allSlides: array });
-
-      let arr = [];
-      for (let i = 0; i < store.pages.length; i++) {
-        arr.push(i);
-      }
+    } catch (e) {
+      console.log(e);
     }
-  }, [tableOfContents, slideData]);
+  }, [isLoading]);
 
   // define your own function
   setColorsPresetFunc((store) => {

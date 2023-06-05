@@ -85,17 +85,6 @@ def make_slide(title, theme, summary, _type):
 
     template = ""
 
-<<<<<<< HEAD
-    if slide_json['type'] == "titleSlide":
-        template = make_TitleSlide()
-    elif slide_json['type'] == "textSlide":
-        template = make_TextSlide()
-    elif slide_json['type'] == "imageHalfSlide":
-        template = make_ImageHalfSlide()
-    elif slide_json['type'] == "imageFullSlide":
-        template = make_ImageFullSlide()
-    elif slide_json['type'] == "imageQuarterSlide":
-=======
     if _type == "titleSlide":
         template = make_TitleSlide()
     elif _type == "textSlide":
@@ -105,16 +94,11 @@ def make_slide(title, theme, summary, _type):
     elif _type == "imageFullSlide":
         template = make_ImageFullSlide()
     elif _type == "imageQuarterSlide":
->>>>>>> 9dacb4371d401beaf3fe5bb17c1c9e4d0debd409
         template = make_ImageQuarterSlide()
     else:
         return "error"
 
-<<<<<<< HEAD
-    return prompt_n_texts(template, title, theme, summary, slide_json, theme)
-=======
     return prompt_n_texts(template, title, theme, summary, _type, theme)
->>>>>>> 9dacb4371d401beaf3fe5bb17c1c9e4d0debd409
 
 
 if __name__ == "__main__":

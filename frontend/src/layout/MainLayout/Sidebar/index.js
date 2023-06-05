@@ -57,12 +57,7 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
         >
           <MenuList />
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            <LoadingButton
-              variant="contained"
-              size="small"
-              loading={loading}
-              loadingIndicator="Generating..."
-            >
+            <LoadingButton variant="contained" size="small" loading={loading} loadingIndicator="Generating...">
               <span>Generated!</span>
             </LoadingButton>
           </Stack>
@@ -73,13 +68,8 @@ const Sidebar = ({ drawerOpen, drawerToggle, window }) => {
           <MenuList />
 
           <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
-            { }
-            <LoadingButton
-              variant="contained"
-              size="small"
-              loading={loading}
-              loadingIndicator="Generating..."
-            >
+            {}
+            <LoadingButton variant="contained" size="small" loading={loading} loadingIndicator="Generating...">
               <span>Generated!</span>
             </LoadingButton>
           </Stack>
