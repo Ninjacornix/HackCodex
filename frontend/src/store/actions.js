@@ -24,3 +24,6 @@ export const SET_TOKENS = '@tokens/SET_TOKENS';
 
 // action - all reducers
 export const RESET_ALL = '@all_reducers/RESET_ALL';
+
+// action - current slide reducer
+export const SET_CURRENT_SLIDE_CONTENT = '@current_slide/SET_CURRENT_SLIDE_CONTENT';

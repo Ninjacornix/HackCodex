@@ -74,6 +74,10 @@ const Customization = () => {
   // state - font family
   const [textName, setTextName] = useState(name);
 
+  const handleMagic = () => {
+    magicPrompt();
+  };
+
   return (
     <>
       {/* toggle button */}
@@ -126,32 +130,11 @@ const Customization = () => {
               </Typography>
               <Typography variant="body1">
                 Press
-                <Button sx={{ mx: 1 }} variant="contained" color="primary" endIcon={<IconNorthStar />}>
+                <Button onClick={handleMagic} sx={{ mx: 1 }} variant="contained" color="primary" endIcon={<IconNorthStar />}>
                   Magic
                 </Button>
                 and create a wild slide!
               </Typography>
-              {/* font family */}
-              {/* <SubCard title="Customize current slide">
-                <FormControl>
-                  <TextField
-                    fullWidth
-                    id="outlined-basic"
-                    outlined
-                    label="Type in your new prompt"
-                    variant="outlined"
-                  ></TextField>
-                </FormControl>
-                <Button onClick={sendPrompt} variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconSend/>}>
-                  Send
-                </Button>
-                <Typography variant="subtitle1" sx={{ mt: 3 }}>
-                  or use
-                </Typography>
-                <Button onClick={magicPrompt} variant="contained" color="primary" sx={{ mt: 3 }} endIcon={<IconNorthStar/>}>
-                  Magic
-                </Button>
-              </SubCard> */}
             </Grid>
           </Grid>
         </PerfectScrollbar>

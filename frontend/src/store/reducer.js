@@ -6,6 +6,7 @@ import authReducer from './authReducer';
 import presentationReducer from './presentationReducer';
 import tokensReducer from './tokensReducer';
 import selectedSlideRecuder from './selectedSlideRecuder';
+import currentSlideReducer from './currentSlideReducer';
 
 // ==============================|| COMBINE REDUCER ||============================== //
 
@@ -14,7 +15,8 @@ const reducer = combineReducers({
   auth: authReducer,
   presentation: presentationReducer,
   tokens: tokensReducer,
-  slides: selectedSlideRecuder
+  slides: selectedSlideRecuder,
+  currentSlide: currentSlideReducer,
 });
 
 export default reducer;

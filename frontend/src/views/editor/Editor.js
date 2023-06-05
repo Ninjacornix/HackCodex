@@ -10,13 +10,13 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useCreateSlideContent } from 'services/slideCreator.service';
 
 import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/popover2/lib/css/blueprint-popover2.css';
 
 import { setColorsPresetFunc } from 'polotno/config';
-import { Button } from '@mui/material';
 
 import { store } from 'App';
 
@@ -25,13 +25,24 @@ const Editor = () => {
   const tableOfContents = useSelector((state) => state.presentation.tableOfContents);
   const currentSlide = useSelector((state) => state.slides.selectedSlide);
   const pageIds = useSelector((state) => state.slides.pageIds);
+  const theme = useSelector((state) => state.presentation.theme);
+  const title = useSelector((state) => state.presentation.title);
+  const summary = useSelector((state) => state.presentation.summary.data);
   const dispatch = useDispatch();
+  const slideData = useSelector((state) => state.currentSlide.currentSlideContent);
+  const [prev, setPrev] = useState(null);
+
+  const crateSlideContent = useCreateSlideContent();
 
   useEffect(() => {
     console.log('table of contents', pageIds);
-    if (tableOfContents.data && tableOfContents.isLoading == false && tableOfContents.data.sections.length) {
-      const id = pageIds[currentSlide];
-      store.selectPage(id.toString());
+    if (tableOfContents.data && tableOfContents.isLoading == false && tableOfContents.data.sections.length && pageIds.length && currentSlide != null) {
+      if(currentSlide == -1) {
+        return;
+      } else {
+        const id = pageIds[currentSlide];
+        store.selectPage(id.toString());
+      }
     }
   }, [currentSlide, pageIds]);
 
@@ -42,18 +53,20 @@ const Editor = () => {
       for (let i = 0; i < tableOfContents.data.sections.length; i++) {
         for (let j = 0; j < tableOfContents.data.sections[i].slides.length; j++) {
           array.push(tableOfContents.data.sections[i].slides[j].title);
-          const page = store.addPage();
-          page.addElement({
-            type: 'text',
-            text: tableOfContents.data.sections[i].slides[j].title,
-            x: 100,
-            y: 100,
-            width: 500,
-            height: 100,
-            fontSize: 40,
-            fill: '#000'
-          });
-          indexArray.push(page.id);
+          const slide_json = tableOfContents.data.sections[i].slides[j];
+          crateSlideContent(title, theme, summary, slide_json);
+          
+          if (slideData && prev != JSON.parse(slideData).pages[0].children) {
+            const slideChildrenData = JSON.parse(slideData).pages[0].children;
+            console.log(JSON.parse(slideData).pages[0].children);
+            const page = store.addPage();
+            for (let k = 0; k < slideChildrenData.length; k++) {
+              page.addElement(slideChildrenData[k]);
+            }
+            indexArray.push(page.id);
+          }
+
+          setPrev(JSON.parse(slideData).pages[0].children);
         }
       }
 
@@ -67,7 +80,7 @@ const Editor = () => {
         arr.push(i);
       }
     }
-  }, [tableOfContents]);
+  }, [tableOfContents, slideData]);
 
   // define your own function
   setColorsPresetFunc((store) => {
