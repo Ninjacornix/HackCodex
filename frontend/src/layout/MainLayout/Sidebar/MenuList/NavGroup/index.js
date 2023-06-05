@@ -12,7 +12,6 @@ import NavCollapse from '../NavCollapse';
 
 const NavGroup = ({ item }) => {
   const theme = useTheme();
-
   // menu list collapse & items
   //console.log(item);
   const items = item.slides?.map((menu) => {
@@ -21,13 +20,13 @@ const NavGroup = ({ item }) => {
       case 'textSlide':
         return <NavCollapse key={menu.id} menu={menu} level={1} />;
       case 'imageFullSlide':
-        return <NavCollapse key={menu.id} menu={menu} level={1} />;
+        return <NavCollapse key={menu.id} menu={menu} level={1}/>;
       case 'imageQuarterSlide':
-        return <NavCollapse key={menu.id} menu={menu} level={1} />;
+        return <NavCollapse key={menu.id} menu={menu} level={1}/>;
       case 'imageHalfSlide':
-        return <NavCollapse key={menu.id} menu={menu} level={1} />;
+        return <NavCollapse key={menu.id} menu={menu} level={1}/>;
       default:
-        return <NavItem key={menu.id} item={menu} level={1} />;
+        return <NavItem key={menu.id} item={menu} level={1}/>;
     }
   });
 

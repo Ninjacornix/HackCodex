@@ -17,6 +17,7 @@ import { IconChevronDown, IconChevronUp } from '@tabler/icons';
 // ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level }) => {
+  
   let newMenu = {
     id: menu.id,
     type: menu.type
@@ -93,7 +94,7 @@ const NavCollapse = ({ menu, level }) => {
             }
           }}
         >
-          <NavItem key={newMenu.title} item={newMenu} level={level + 1} />
+          <NavItem key={newMenu.title} item={newMenu} level={level + 1} searchIndex={menu.title}/>
         </List>
       </Collapse>
     </>

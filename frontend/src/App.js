@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, StyledEngineProvider } from '@mui/material';
-
+import { createStore } from 'polotno/model/store';
 // routing
 import Routes from 'routes';
 
@@ -14,6 +14,10 @@ import NavigationScroll from 'layout/NavigationScroll';
 import LandingRouter from 'routes/LandingPageRouter';
 
 // ==============================|| APP ||============================== //
+
+export const store = createStore({
+  key: 'nFA5H9elEytDyPyvKL7T'
+});
 
 const App = () => {
   const customization = useSelector((state) => state.customization);

@@ -14,6 +14,11 @@ export const SET_PROMPT_DATA = '@presentation/PROMPT';
 export const SET_TOC = '@presentation/TOC';
 export const SET_SUMMARY = '@presentation/SUMMARY';
 
+// action - selected slide reducer
+export const SET_CURRENT_SLIDE = '@slide/SET_CURRENT_SLIDE';
+export const SET_ALL_SLIDES = '@slide/SET_ALL_SLIDES';
+export const SET_PAGES_INDEX = '@slide/SET_PAGES_INDEX';
+
 // action - tokens reducer
 export const SET_TOKENS = '@tokens/SET_TOKENS';
 
