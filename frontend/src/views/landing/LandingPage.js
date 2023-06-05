@@ -32,18 +32,22 @@ class HomeTwo extends React.Component {
     return (
       <Aux>
         {/* Navbar Component*/}
-        <Navbar />
+        {/* <Navbar /> */}
 
-        <section className="section bg-home home-half" id="home" data-image-src="images/bg-home.jpg">
+        <section
+          className="section bg-home home-half"
+          id="home"
+          data-image-src="images/bg-home.jpg"
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 160 }}
+        >
           <div className="bg-overlay"></div>
           <div className="display-table">
             <div className="display-table-cell">
               <div className="container">
-                <div className="row">
-                  <div className="col-lg-8 offset-lg-2 text-white text-center">
-                    <h1 className="home-title">Making presentations is now easy</h1>
+                <div className="row-100vw" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <div className="col-lg-8 center text-white text-center">
+                    <h1 className="home-title">Creating presentations has never been easier</h1>
                     {/*<p className="padding-t-15 home-desc">Etiam sed.Interdum consequat proin vestibulum className at.</p>*/}
-
                   </div>
                 </div>
               </div>
