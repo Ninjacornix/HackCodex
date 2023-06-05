@@ -1,4 +1,5 @@
 import json
+from pprint import pprint
 import openai
 import os
 
@@ -30,7 +31,7 @@ def make_ImageQuarterSlide():
     return json.dumps(template1[4])
 
 
-def prompt_n_texts(template, title, theme, summary, slide_json, template_name):
+def prompt_n_texts(template, title, theme, summary, _type, template_name):
 
     n = template.count("$text$")
 
@@ -39,7 +40,7 @@ def prompt_n_texts(template, title, theme, summary, slide_json, template_name):
 
         Create text for """ + template_name + """ template.
 
-        """ + slide_json + """
+        """ + _type + """
 
         Title: """ + title + """
 
@@ -80,24 +81,24 @@ def prompt_n_texts(template, title, theme, summary, slide_json, template_name):
     return out
 
 
-def make_slide(title, theme, summary, slide_json):
+def make_slide(title, theme, summary, _type):
 
     template = ""
 
-    if theme == "titleSlide":
+    if _type == "titleSlide":
         template = make_TitleSlide()
-    elif theme == "textSlide":
+    elif _type == "textSlide":
         template = make_TextSlide()
-    elif theme == "imageHalfSlide":
+    elif _type == "imageHalfSlide":
         template = make_ImageHalfSlide()
-    elif theme == "imageFullSlide":
+    elif _type == "imageFullSlide":
         template = make_ImageFullSlide()
-    elif theme == "imageQuarterSlide":
+    elif _type == "imageQuarterSlide":
         template = make_ImageQuarterSlide()
     else:
         return "error"
 
-    return prompt_n_texts(template, title, slide_json['type'], summary, slide_json, theme)
+    return prompt_n_texts(template, title, theme, summary, _type, theme)
 
 
 if __name__ == "__main__":
