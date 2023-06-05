@@ -109,20 +109,6 @@ async def _fs(request: Request, secret: str = ""):
         return rm(body["id"], body["path"])
 
 
-@app.post('/make_slide')
-async def _make_slide(request: Request, secret: str = ""):
-
-    body = await request.body()
-    body = json.loads(body)
-
-    title = body["title"]
-    theme = body["theme"]
-    summary = body["summary"]
-    slide_json = body["slide_json"]
-
-    return make_slide(title, theme, summary, slide_json)
-
-
 @app.get('/make_slide')
 async def _make_slide(request: Request,
                       title: str,
