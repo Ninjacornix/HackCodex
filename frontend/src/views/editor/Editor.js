@@ -46,7 +46,6 @@ const Editor = () => {
       for (let i = 0; i < store.pages.length; i++) {
         arr.push(i);
       }
-
     }
   }, [tableOfContents]);
 
@@ -100,10 +99,9 @@ const Editor = () => {
     // console.log(JSON.stringify(store.toJSON()));
   }
 
-
   return (
     <div className="bp4-dark">
-      <Button onClick={() => handleAiMagic()}>Ejajifaj</Button>
+      {/* <Button onClick={() => handleAiMagic()}>Ejajifaj</Button> */}
       <PolotnoContainer style={{ height: '75vh', overflow: 'hidden' }}>
         <SidePanelWrap>
           <SidePanel store={store} />
